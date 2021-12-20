@@ -27,7 +27,8 @@ public class AddToFavoriteTest {
     @Test
     public void SortByPriceTest(){
         searchResultPage.AddToFavorites();
-        Assert.assertEquals(TestResources.getProperty("myFavorites"), searchResultPage.DoesMessageIsAddedAppear().toString());
+        String DoesMessageIsAddedAppear = searchResultPage.ConfirmationMessageAddedToFavorites().toString();
+        Assert.assertEquals(TestResources.getProperty("confirm"),DoesMessageIsAddedAppear );
     }
     @AfterClass
     public static void teardown(){

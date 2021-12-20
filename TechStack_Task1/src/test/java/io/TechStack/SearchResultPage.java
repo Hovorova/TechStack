@@ -2,8 +2,11 @@ package io.TechStack;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import java.security.cert.X509Certificate;
 
 public class SearchResultPage {
 
@@ -15,8 +18,14 @@ public class SearchResultPage {
     private WebElement fromLowestPrice;
 
     //For filter
-    @FindBy(name = "SustainablePropertyFilter")
-    private WebElement filterValue;
+    @FindBy(xpath = "//*[@id=\"searchboxInc\"]/div[1]/div/div/div[1]/div[2]/div[2]/div[1]/label/span")
+    private WebElement SetYourOwnBudgetButton;
+    @FindBy(xpath = "//*[@id=\"searchboxInc\"]/div[1]/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[1]/span[2]/span")
+    private WebElement SelectedBudgetInfo;
+    @FindBy(xpath = "//*[@id=\"searchboxInc\"]/div[1]/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[2]")
+    private WebElement UpperDotOnBudgetLine;
+    @FindBy(xpath = "//*[@id=\"searchboxInc\"]/div[1]/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/span[14]")
+    private WebElement TargetDotOnBudgetLine;
 
 
     //For Changing param
@@ -30,7 +39,7 @@ public class SearchResultPage {
     //For add to favourite
     @FindBy(xpath = "/html/body/div[3]/div/div[4]/div[1]/div[1]/div[4]/div[4]/div[1]/div/div/div/div[5]/div[2]/div[1]/div[1]/div/div[2]/span/button")
     private WebElement addToFavouriteIcon;
-    @FindBy(xpath = "/html/body/div[15]/div")
+    @FindBy(xpath = "//*[@id=\"__bui-125\"]/div")
     private WebElement messegeIsAdded;
 
     private WebDriver driver;
@@ -53,18 +62,15 @@ public class SearchResultPage {
     // For changing param
     public void ChangeParam(){
         cityNameField.clear();
-        cityNameField.sendKeys("Киев");
+        cityNameField.sendKeys("Kyiv");
         submitChangesButton.click();
-    }
-    public String getTitleAfterChangingParam(){
-        return titlleafterChangingParam.getText();
     }
 
     // for adding to favorite
     public void  AddToFavorites(){
         addToFavouriteIcon.click();
     }
-    public Boolean DoesMessageIsAddedAppear(){
+    public Boolean ConfirmationMessageAddedToFavorites(){
         if(messegeIsAdded.isDisplayed()){
             return true;
         }else {
@@ -72,15 +78,17 @@ public class SearchResultPage {
         }
     }
 
-    //for filter
-    public void setFilterValue(){
-        filterValue.click();
+    // for filter
+    public void SetBudget(){
+        SetYourOwnBudgetButton.click();
+        Actions action = new Actions(driver);
+        action.dragAndDrop(UpperDotOnBudgetLine, TargetDotOnBudgetLine).build().perform();
     }
-    public Boolean DoesCheckboxValueIsActive(){
-        if(filterValue.isSelected()){
-            return true;
-        } else{
-            return false;
+    public Boolean ConfirmUserSetBudget(){
+            if(SelectedBudgetInfo.isDisplayed()) {
+                return true;
+            } else {
+                return false;
+            }
         }
-    }
 }

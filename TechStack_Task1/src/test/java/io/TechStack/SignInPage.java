@@ -10,6 +10,7 @@ public class SignInPage {
     private WebElement email;
     @FindBy(xpath = "/html/body/div/div/div/div[2]/div[1]/div/div/div/div/div/div/form/div[3]/button")
     private WebElement continueWithEmailButton;
+
     private WebDriver driver;
 
     public SignInPage(WebDriver driver){

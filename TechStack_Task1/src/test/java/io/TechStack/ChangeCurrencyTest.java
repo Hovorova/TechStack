@@ -26,13 +26,14 @@ public class ChangeCurrencyTest {
     }
 
     @Test
-    public void ChangeCurrencyTest(){
+    public void ChangeCurrency(){
         mainPage.ChangeCurrency();
-        Assert.assertEquals(TestResources.getProperty("currentCurrency"), mainPage.getCurrentCurrency());
+        Assert.assertEquals("EUR\n" + "Выберите валюту. Текущая валюта — Евро" ,mainPage.getCurrentCurrency().toString() );
     }
 
     @AfterClass
     public static void teardown(){
         driver.quit();
     }
+
 }

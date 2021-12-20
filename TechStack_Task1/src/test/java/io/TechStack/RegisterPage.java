@@ -10,16 +10,15 @@ public class RegisterPage {
     private WebElement username;
     @FindBy(xpath = "//*[@id=\"root\"]/div/div/div[2]/div[1]/div/div/div/div/div/div/form/div[3]/button")
     private WebElement submitButton;
+
     private WebDriver driver;
 
     public RegisterPage(WebDriver driver){
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
-    public void enterEmail (String input){
+    public void enterEmail(String input){
         username.sendKeys(input);
-    }
-    public void Register(){
         submitButton.click();
     }
 }

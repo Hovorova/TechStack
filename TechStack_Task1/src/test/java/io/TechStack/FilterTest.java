@@ -7,13 +7,14 @@ import org.junit.Test;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 
 import java.time.Duration;
 
 public class FilterTest {
     private static SearchResultPage searchResultPage;
     private static WebDriver driver;
-    private static JavascriptExecutor js;
+    private static Actions action;
 
     @BeforeClass
     public static void setup(){
@@ -22,20 +23,22 @@ public class FilterTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get(TestResources.getProperty("searchResultPage"));
-        js = (JavascriptExecutor) driver;
 
+        action = new Actions(driver);
 
         searchResultPage = new SearchResultPage(driver);
     }
 
     @Test
     public void FilterTest(){
-        js.executeScript("window.scrollBy(0,1000)");
-        searchResultPage.setFilterValue();
-        Assert.assertEquals(TestResources.getProperty("isActive"), searchResultPage.DoesCheckboxValueIsActive().toString());
+        searchResultPage.SetBudget();
+        String DoesUserSetBudget = searchResultPage.ConfirmUserSetBudget().toString();
+        Assert.assertEquals(TestResources.getProperty("confirm"), DoesUserSetBudget);
     }
+
     @AfterClass
     public static void teardown(){
         driver.quit();
     }
+
 }

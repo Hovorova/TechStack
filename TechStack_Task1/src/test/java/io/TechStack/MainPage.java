@@ -35,8 +35,8 @@ public class MainPage {
     //For changing currency
     @FindBy(xpath = "//*[@id=\"b2indexPage\"]/header/nav[1]/div[2]/div[1]/button")
     private WebElement changeCurrencyButton;
-    @FindBy(xpath = "//*[@id=\"_u16dyja4j\"]/div/div/div/div/div/div[1]/div/div[2]/div/div/div[1]/ul/li[3]/a/div/div")
-    private WebElement currencyRub;
+    @FindBy(className = "bui-inline-container__main")
+    private WebElement currencyEuro;
 
     private WebDriver driver;
 
@@ -64,10 +64,10 @@ public class MainPage {
     //For changing currency
     public void ChangeCurrency(){
         changeCurrencyButton.click();
-        currencyRub.click();
+        currencyEuro.click();
     }
     public String getCurrentCurrency(){
-        return changeLanguageButton.getText();
+        return changeCurrencyButton.getText();
     }
 
     //For Search

@@ -11,19 +11,20 @@ import java.time.Duration;
 import java.util.Locale;
 
 public class SignInTest {
-    private static MainPage mainPage;
     private static SignInPage signInPage;
+    private static AccountSignInPage accountSignInPage;
     private static WebDriver driver;
 
     @BeforeClass
     public static void setup() {
         System.setProperty("webdriver.chrome.driver", TestResources.getProperty("chromedriver"));
-        WebDriver driver = new ChromeDriver();
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get(TestResources.getProperty("signInPage"));
+        driver.get(TestResources.getProperty("accountSignInPage"));
 
-        mainPage = new MainPage(driver);
+        accountSignInPage = new AccountSignInPage(driver);
         signInPage = new SignInPage(driver);
     }
 
@@ -31,12 +32,12 @@ public class SignInTest {
     public void signInTest(){
         signInPage.enterEmail(TestResources.getProperty("email"));
         signInPage.signIn();
-        Assert.assertEquals(TestResources.getProperty("username"), mainPage.getUserName());
+        String DoesMessageAppearce = accountSignInPage.ConfirmSignIn().toString();
+        Assert.assertEquals(TestResources.getProperty("confirm"),DoesMessageAppearce );
     }
 
     @AfterClass
     public static void teardown(){
-        mainPage.logout();
         driver.quit();
     }
 }

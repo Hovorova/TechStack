@@ -26,7 +26,7 @@ public class SortFromLowestPriceTest {
     @Test
     public void SortByPriceTest(){
         searchResultPage.FilterByPrice();
-        Assert.assertEquals(TestResources.getProperty("isEnabled"), searchResultPage.ButtonFromLowestPriceIsDisabled().toString());
+        Assert.assertEquals(TestResources.getProperty("confirm"), searchResultPage.ButtonFromLowestPriceIsDisabled().toString());
     }
     @AfterClass
     public static void teardown(){
