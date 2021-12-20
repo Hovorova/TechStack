@@ -14,21 +14,24 @@ public class SearchResultPage {
     @FindBy(xpath = "//*[@id=\"ajaxsrwrap\"]/div[2]/div/div/div[2]/ul/li[3]/a")
     private WebElement fromLowestPrice;
 
+    //For filter
+    @FindBy(name = "SustainablePropertyFilter")
+    private WebElement filterValue;
+
+
     //For Changing param
     @FindBy(xpath = "//*[@id=\"ss\"]")
     private WebElement cityNameField;
     @FindBy(xpath = "//*[@id=\"frm\"]/div[5]/div[2]/button")
     private WebElement submitChangesButton;
-    @FindBy(xpath = "//*[@id=\"right\"]/div[1]/div/div/div/h1")
+    @FindBy(xpath = "/html/body/div[3]/div/div[4]/div[1]/div[1]/div[4]/div[4]/div[1]/div/div/div/div[5]/div[4]/div[1]/div[2]/div/div[1]/div/div[1]/div/div[1]/div/h3/a/div[1]")
     private WebElement titlleafterChangingParam;
 
     //For add to favourite
-    @FindBy(xpath = "//*[@id=\"search_results_table\"]/div[1]/div/div/div/div[5]/div[1]/div[1]/div[1]/div/div[2]/span/div/span/button/span/svg/path")
+    @FindBy(xpath = "/html/body/div[3]/div/div[4]/div[1]/div[1]/div[4]/div[4]/div[1]/div/div/div/div[5]/div[2]/div[1]/div[1]/div/div[2]/span/button")
     private WebElement addToFavouriteIcon;
-    @FindBy(xpath = "//*[@id=\"__bui-136\"]/div/div/div/div/div[1]/a/span")
-    private WebElement titleAddedToFavorites;
-    @FindBy(xpath = "//*[@id=\"b2mywishlistPage\"]/div[2]/div[2]/div/div/div[1]/div/h1")
-    private WebElement myFavorites;
+    @FindBy(xpath = "/html/body/div[15]/div")
+    private WebElement messegeIsAdded;
 
     private WebDriver driver;
 
@@ -60,10 +63,24 @@ public class SearchResultPage {
     // for adding to favorite
     public void  AddToFavorites(){
         addToFavouriteIcon.click();
-        titleAddedToFavorites.click();
     }
-    public String IsAddedToFavorites(){
-        return myFavorites.getText();
+    public Boolean DoesMessageIsAddedAppear(){
+        if(messegeIsAdded.isDisplayed()){
+            return true;
+        }else {
+            return false;
+        }
     }
 
+    //for filter
+    public void setFilterValue(){
+        filterValue.click();
+    }
+    public Boolean DoesCheckboxValueIsActive(){
+        if(filterValue.isSelected()){
+            return true;
+        } else{
+            return false;
+        }
+    }
 }
