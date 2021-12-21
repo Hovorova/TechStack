@@ -28,7 +28,7 @@ public class SelectRoomForBookingTest {
 
     @Test
     public void SelectRoomTest() {
-        hotelPage.HandleDropDownListAndSubmitReserve();
+        hotelPage.handleDropDownListAndSubmitReserve();
         String DoesBookFormAppear = enterYourInfoToBookTheRoomPage.ConfirmUserHasSelectedTheRoom().toString();
         Assert.assertEquals(TestResources.getProperty("confirm"), DoesBookFormAppear);
     }

@@ -27,7 +27,7 @@ public class RegisterTest {
     }
 
     @Test
-    public void RegisterTest() {
+    public void registerTest() {
         registerPage.enterEmail(TestResources.getProperty("email"));
         accountRegisterPage.EnterPassword();
         String DoesMessageYouAreNotRobotAppears = accountRegisterPage.ConfirmRegister().toString();

@@ -22,7 +22,7 @@ public class HotelPage {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
-    public void HandleDropDownListAndSubmitReserve(){
+    public void handleDropDownListAndSubmitReserve(){
         JavascriptExecutor js = (JavascriptExecutor)driver;
         js.executeScript("arguments[0].scrollIntoView();", SelectRoomDropDown);
         Select objSelect = new Select(SelectRoomDropDown);

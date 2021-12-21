@@ -28,7 +28,7 @@ public class ChangingSearchParamTest {
     }
 
     @Test
-    public void ChangingSearchParam() {
+    public void changingSearchParam() {
         searchResultPage.ChangeParam();
         changeSearchParamPage.getTitleAfterChangingParam();
         Assert.assertEquals(TestResources.getProperty("titleAfterChanges"), changeSearchParamPage.getTitleAfterChangingParam());
