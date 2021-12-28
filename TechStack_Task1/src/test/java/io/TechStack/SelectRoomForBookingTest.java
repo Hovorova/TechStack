@@ -32,10 +32,10 @@ public class SelectRoomForBookingTest {
         String DoesBookFormAppear = enterYourInfoToBookTheRoomPage.ConfirmUserHasSelectedTheRoom().toString();
         Assert.assertEquals(TestResources.getProperty("confirm"), DoesBookFormAppear);
     }
-
+/**
     @AfterClass
     public static void teardown() {
         driver.quit();
     }
-
+*/
 }
