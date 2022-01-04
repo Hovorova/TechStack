@@ -25,9 +25,9 @@ public class MainPage {
     private WebElement whereAreYouGoingInput;
     @FindBy(xpath = "//*[@id=\"frm\"]/div[1]/div[2]/div[1]/div[2]/div/div/div/div/span")
     private WebElement CheckInButton;
-    @FindBy(xpath = "//*[@id=\"frm\"]/div[1]/div[2]/div[2]/div/div/div[3]/div[2]/table/tbody/tr[5]/td[5]")
+    @FindBy(xpath = "//*[@id=\"frm\"]/div[1]/div[2]/div[2]/div/div/div[3]/div[1]/table/tbody/tr[5]/td[5]/span/span")
     private WebElement dateCheckIn;
-    @FindBy(xpath = "//*[@id=\"frm\"]/div[1]/div[2]/div[2]/div/div/div[3]/div[2]/table/tbody/tr[6]/td[1]")
+    @FindBy(xpath = "//*[@id=\"frm\"]/div[1]/div[2]/div[2]/div/div/div[3]/div[1]/table/tbody/tr[5]/td[7]/span/span")
     private WebElement dateCheckOut;
     @FindBy(xpath = "//*[@id=\"frm\"]/div[1]/div[4]/div[2]/button")
     private WebElement searchButton;
