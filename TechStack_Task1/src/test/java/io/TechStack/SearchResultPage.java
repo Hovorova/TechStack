@@ -1,12 +1,11 @@
 package io.TechStack;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import java.security.cert.X509Certificate;
 
 public class SearchResultPage {
 
@@ -39,8 +38,10 @@ public class SearchResultPage {
     //For add to favourite
     @FindBy(xpath = "/html/body/div[3]/div/div[4]/div[1]/div[1]/div[4]/div[4]/div[1]/div/div/div/div[5]/div[2]/div[1]/div[1]/div/div[2]/span/button")
     private WebElement addToFavouriteIcon;
+    /*
     @FindBy(xpath = "//*[@id=\"__bui-125\"]/div")
     private WebElement messegeIsAdded;
+    */
 
     private WebDriver driver;
 
@@ -68,14 +69,10 @@ public class SearchResultPage {
 
     // for adding to favorite
     public void  AddToFavorites(){
-        addToFavouriteIcon.click();
+         addToFavouriteIcon.click();
     }
     public Boolean ConfirmationMessageAddedToFavorites(){
-        if(messegeIsAdded.isDisplayed()){
-            return true;
-        }else {
-            return false;
-        }
+        return driver.findElement(By.xpath("//*[@id=\"__bui-121\"]/div/div/div/div/div[1]")).isDisplayed();
     }
 
     // for filter

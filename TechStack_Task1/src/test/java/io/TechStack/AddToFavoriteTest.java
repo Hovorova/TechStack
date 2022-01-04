@@ -4,6 +4,7 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -25,13 +26,14 @@ public class AddToFavoriteTest {
     }
 
     @Test
-    public void SortByPriceTest(){
+    public void AddToFavTest(){
         searchResultPage.AddToFavorites();
         String DoesMessageIsAddedAppear = searchResultPage.ConfirmationMessageAddedToFavorites().toString();
-        Assert.assertEquals(TestResources.getProperty("confirm"),DoesMessageIsAddedAppear );
+        Assert.assertEquals(TestResources.getProperty("confirm"),DoesMessageIsAddedAppear);
     }
     @AfterClass
     public static void teardown(){
         driver.quit();
     }
+
 }
