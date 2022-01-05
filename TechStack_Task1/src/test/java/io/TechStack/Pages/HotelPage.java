@@ -1,4 +1,4 @@
-package io.TechStack;
+package io.TechStack.Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;

@@ -1,5 +1,6 @@
-package io.TechStack;
+package io.TechStack.Pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -29,11 +30,7 @@ public class EnterYourInfoToBookTheRoomPage {
 
     // For SelectRoomForBookingTest
     public Boolean ConfirmUserHasSelectedTheRoom() {
-        if (bookForm.isDisplayed()) {
-            return true;
-        } else {
-            return false;
-        }
+        return bookForm.isDisplayed();
     }
 
     //Filling the bookForm
@@ -42,6 +39,6 @@ public class EnterYourInfoToBookTheRoomPage {
         LastNameInput.sendKeys("Lastname");
         EmailInput.sendKeys("testemail@gmail.com");
         ConfirmEmailInput.sendKeys("testemail@gmail.com");
-        SubmitFormButton.click();
+        driver.findElement(By.xpath("//*[@id=\"bookForm\"]/div[4]/div/div[2]/button")).submit();
     }
 }
