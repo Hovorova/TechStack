@@ -1,8 +1,6 @@
 package io.TechStack.Pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -53,6 +51,10 @@ public class MainPage {
     private WebElement currencyHryvnia;
     @FindBy(partialLinkText = "RUB")
     private WebElement currencyRuble;
+
+    // For getSizeAndLocationOfSignInButton
+    @FindBy(css = "#b2indexPage > header > nav.bui-header__bar > div.bui-group.bui-button-group.bui-group--inline.bui-group--align-end.bui-group--vertical-align-middle > div:nth-child(6) > a")
+    private WebElement signInButton;
 
 
     private WebDriver driver;
@@ -117,5 +119,28 @@ public class MainPage {
         dateCheckIn.click();
         dateCheckOut.click();
         searchButton.click();
+    }
+
+    // For getSizeAndLocationOfSignInButton
+    public Dimension getSizeOfSignInButton(){
+        return signInButton.getSize();
+    }
+    public Point getLocationOfSignInButton(){
+        return signInButton.getLocation();
+    }
+
+    //For getCssValueTest
+    public String getCssValueOfSignInButton(){
+        return signInButton.getCssValue("background-color");
+    }
+
+    //For checking tagname and attribute of WhereAreYouGoingInput field
+    public boolean IsInputWhereAreYouGoingFieldTagname(){
+        boolean tagIsInput = "input".equals(whereAreYouGoingInput.getTagName());
+        return tagIsInput;
+    }
+    public boolean IsInputWhereareYouGoingFieldAttribute(){
+        boolean attributeWhereAreYouGoing = "search".equals(whereAreYouGoingInput.getAttribute("type"));
+        return attributeWhereAreYouGoing;
     }
 }

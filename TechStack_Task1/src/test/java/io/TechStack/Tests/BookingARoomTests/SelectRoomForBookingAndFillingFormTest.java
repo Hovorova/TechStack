@@ -28,8 +28,7 @@ public class SelectRoomForBookingAndFillingFormTest {
         hotelPage = new HotelPage(driver);
         enterYourInfoToBookTheRoomPage = new EnterYourInfoToBookTheRoomPage(driver);
         hotelPage.handleDropDownListAndSubmitReserve();
-        String DoesBookFormAppear = enterYourInfoToBookTheRoomPage.ConfirmUserHasSelectedTheRoom().toString();
-        Assert.assertEquals(TestResources.getProperty("confirm"), DoesBookFormAppear);
+        Assert.assertTrue(enterYourInfoToBookTheRoomPage.ConfirmUserHasSelectedTheRoom());
     }
 
     @Test

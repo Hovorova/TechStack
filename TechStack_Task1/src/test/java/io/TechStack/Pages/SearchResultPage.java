@@ -44,11 +44,12 @@ public class SearchResultPage {
         this.driver = driver;
     }
 
-    public void FilterByPrice(){
+    // For sort by lowest price
+    public void SortByPrice(){
         fromLowestPrice.click();
     }
 
-    public Boolean ButtonFromLowestPriceIsDisabled(){
+    public Boolean ButtonFromLowestPriceIsEnabled(){
         return fromLowestPrice.isEnabled();
     }
 

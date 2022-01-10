@@ -32,6 +32,14 @@ public class SearchTest {
         Assert.assertEquals(TestResources.getProperty("correctSearch"), searchResult);
     }
 
+    @Test
+    public void CheckTagnameOfWhereAreYouGoingFieldTest(){
+        driver.get(TestResources.getProperty("mainPage"));
+        mainPage =  new MainPage(driver);
+        Assert.assertEquals(true, mainPage.IsInputWhereAreYouGoingFieldTagname());
+        Assert.assertEquals(true, mainPage.IsInputWhereareYouGoingFieldAttribute());
+    }
+
     @AfterClass
     public static void teardown(){
         driver.quit();

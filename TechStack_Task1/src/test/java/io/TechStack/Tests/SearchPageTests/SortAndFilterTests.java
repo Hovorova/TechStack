@@ -22,8 +22,8 @@ public class SortAndFilterTests {
     public void SortByLowerPriceTest() {
         driver.get(TestResources.getProperty("searchResultPage"));
         searchResultPage = new SearchResultPage(driver);
-        searchResultPage.FilterByPrice();
-        Assert.assertEquals(TestResources.getProperty("confirm"), searchResultPage.ButtonFromLowestPriceIsDisabled().toString());
+        searchResultPage.SortByPrice();
+        Assert.assertTrue(searchResultPage.ButtonFromLowestPriceIsEnabled());
     }
 
     @Test
