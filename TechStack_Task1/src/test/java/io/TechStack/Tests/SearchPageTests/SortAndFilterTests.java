@@ -14,12 +14,12 @@ public class SortAndFilterTests {
     private static WebDriver driver;
 
     @BeforeClass
-    public static void setup(){
+    public static void setup() {
         driver = DriverHelper.getDriver();
     }
 
     @Test
-    public void SortByLowerPriceTest(){
+    public void SortByLowerPriceTest() {
         driver.get(TestResources.getProperty("searchResultPage"));
         searchResultPage = new SearchResultPage(driver);
         searchResultPage.FilterByPrice();
@@ -27,16 +27,15 @@ public class SortAndFilterTests {
     }
 
     @Test
-    public void FilterTest(){
+    public void FilterSetYourBudgetTest() {
         driver.get(TestResources.getProperty("searchResultPage"));
         searchResultPage = new SearchResultPage(driver);
         searchResultPage.SetBudget();
-        String DoesUserSetBudget = searchResultPage.ConfirmUserSetBudget().toString();
-        Assert.assertEquals(TestResources.getProperty("confirm"), DoesUserSetBudget);
+        Assert.assertTrue(searchResultPage.ConfirmUserSetBudget());
     }
 
     @AfterClass
-    public static void teardown(){
+    public static void teardown() {
         driver.quit();
-    }
+        }
 }

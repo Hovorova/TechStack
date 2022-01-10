@@ -28,9 +28,9 @@ public class AddToFavoriteTest {
         searchResultPage.AddToFavorites();
         Assert.assertTrue(driver.findElement(By.linkText("My next trip")).isDisplayed());
     }
+
     @AfterClass
     public static void teardown(){
         driver.quit();
     }
-
 }

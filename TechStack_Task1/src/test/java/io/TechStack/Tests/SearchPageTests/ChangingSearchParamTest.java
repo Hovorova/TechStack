@@ -25,7 +25,7 @@ public class ChangingSearchParamTest {
         driver.get(TestResources.getProperty("afterChangingParamPage"));
         searchResultPage = new SearchResultPage(driver);
         searchResultPage.ChangeParam();
-        Assert.assertEquals(TestResources.getProperty("titleAfterChanges"), driver.findElement(By.xpath("//*[@id=\"right\"]/div[1]/div/div/div/h1")).getText());
+        Assert.assertTrue(searchResultPage.verifyChangeParam());
     }
 
     @AfterClass

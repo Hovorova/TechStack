@@ -20,28 +20,12 @@ public class ChangeLanguageAndCurrencyTest {
     }
 
     @Test
-    public void ChangeLanguageTestToEng(){
-        driver.get(TestResources.getProperty("mainPage"));
-        mainPage =  new MainPage(driver);
-        mainPage.ChangeLanguageToEng();
-        Assert.assertEquals(TestResources.getProperty("titleLanguage"), driver.findElement(By.xpath("//*[@id=\"frm\"]/div[1]/div[4]/div[2]/button/span[1]")).getText());
-    }
-
-    @Test
-    public void ChangeCurrencyToEuro(){
-        driver.get(TestResources.getProperty("mainPage"));
-        mainPage =  new MainPage(driver);
-        mainPage.ChangeCurrencyToEuro();
-        Assert.assertEquals("EUR\n" + "Выберите валюту. Текущая валюта — Евро", driver.findElement(By.xpath("//*[@id=\"b2indexPage\"]/header/nav[1]/div[2]/div[1]/button")).getText());
-
-    }
-
-    @Test
     public void ChangeLanguageTest(){
         driver.get(TestResources.getProperty("mainPage"));
         mainPage =  new MainPage(driver);
-        mainPage.ChangeLanguage();
-        Assert.assertEquals(TestResources.getProperty("polski"), driver.findElement(By.xpath("//*[@id=\"frm\"]/div[1]/div[4]/div[2]/button/span[1]")).getText());
+        mainPage.ChangeLanguage("Polski");
+        String currentLanguage =  driver.findElement(By.xpath("//*[@id=\"frm\"]/div[1]/div[4]/div[2]/button/span[1]")).getText();
+        Assert.assertEquals(TestResources.getProperty("polski"),currentLanguage);
 
     }
 
@@ -49,13 +33,13 @@ public class ChangeLanguageAndCurrencyTest {
     public void ChangeCurrencyTest(){
         driver.get(TestResources.getProperty("mainPage"));
         mainPage =  new MainPage(driver);
-        mainPage.ChangeCurrency();
-        Assert.assertEquals("USD\n" + "Выберите валюту. Текущая валюта — Доллар США", driver.findElement(By.xpath("//*[@id=\"b2indexPage\"]/header/nav[1]/div[2]/div[1]/button")).getText());
+        mainPage.ChangeCurrency("Dollar");
+        String currentCurrency = driver.findElement(By.xpath("//*[@id=\"b2indexPage\"]/header/nav[1]/div[2]/div[1]/button")).getText();
+        Assert.assertEquals("USD\n" + "Выберите валюту. Текущая валюта — Доллар США", currentCurrency);
     }
 
     @AfterClass
     public static void teardown(){
         driver.quit();
     }
-
 }

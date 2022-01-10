@@ -69,62 +69,42 @@ public class MainPage {
         logout.click();
     }
 
-    //For Changing lang to eng
-    public void ChangeLanguageToEng(){
-        changeLanguageButton.click();
-        englishIcon.click();
-    }
-
     //For changing language
-    public void ChangeLanguage(){
-        String language = "Polski";
+    public void ChangeLanguage(String language){
+        changeLanguageButton.click();
         switch (language){
             case "English":
-                changeLanguageButton.click();
                 englishIcon.click();
                 break;
             case "Russian":
-                changeLanguageButton.click();
                 russianIcon.click();
                 break;
             case "Ukrainian":
-                changeLanguageButton.click();
                 ukrainianIcon.click();
                 break;
             case "Polski":
-                changeLanguageButton.click();
                 polskiIcon.click();
                 break;
         }
     }
 
-    //For changing currency to euro
-    public void ChangeCurrencyToEuro(){
-        changeCurrencyButton.click();
-        currencyEuro.click();
-    }
-
     // For changing currency
-    public void ChangeCurrency() {
-        String currency = "Dollar";
+    public void ChangeCurrency(String currency) {
         Actions action = new Actions(driver);
+        changeCurrencyButton.click();
         switch (currency) {
             case "Euro":
-                changeCurrencyButton.click();
-                currencyEuro.click();
+                action.click(currencyEuro).build().perform();
                 break;
             case "Dollar":
-                changeCurrencyButton.click();
                 action.click(currencyDollar).build().perform();
                 // currencyDollar.click();
                 break;
             case "Hryvnia":
-                changeCurrencyButton.click();
-                currencyHryvnia.click();
+                action.click(currencyHryvnia).build().perform();
                 break;
             case "Ruble":
-                changeCurrencyButton.click();
-                currencyRuble.click();
+                action.click(currencyRuble).build().perform();
                 break;
         }
     }
@@ -138,5 +118,4 @@ public class MainPage {
         dateCheckOut.click();
         searchButton.click();
     }
-
 }

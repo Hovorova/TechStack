@@ -26,9 +26,10 @@ public class SearchTest {
         driver.get(TestResources.getProperty("mainPage"));
         mainPage = new MainPage(driver);
         searchResultPage = new SearchResultPage(driver);
-        mainPage.ChangeLanguageToEng();
+        mainPage.ChangeLanguage("English");
         mainPage.Search();
-        Assert.assertEquals(TestResources.getProperty("correctSearch"), driver.findElement(By.xpath("//*[@id=\"bodyconstraint-inner\"]/div[1]/div/div/div/nav/ol/li[5]/span/a/span")).getText());
+        String searchResult = driver.findElement(By.xpath("//*[@id=\"bodyconstraint-inner\"]/div[1]/div/div/div/nav/ol/li[5]/span/a/span")).getText();
+        Assert.assertEquals(TestResources.getProperty("correctSearch"), searchResult);
     }
 
     @AfterClass

@@ -13,14 +13,14 @@ public class SearchResultPage {
     @FindBy(xpath = "//*[@id=\"ajaxsrwrap\"]/div[2]/div/div/div[2]/ul/li[3]/a")
     private WebElement fromLowestPrice;
 
-    //For filter
-    @FindBy(xpath = "//*[@id=\"searchboxInc\"]/div[1]/div/div/div[1]/div[2]/div[2]/div[1]/label/span")
+    //For filter set your own budget
+    @FindBy(className = "_a48a3fc0e")
     private WebElement SetYourOwnBudgetButton;
-    @FindBy(xpath = "//*[@id=\"searchboxInc\"]/div[1]/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[1]/span[2]/span")
+    @FindBy(xpath = "//*[@id=\"searchboxInc\"]/div[1]/div/div/div[1]/div[2]/div/div/div/div/div[2]/div[2]/div/div[1]/span[2]/span")
     private WebElement SelectedBudgetInfo;
-    @FindBy(xpath = "//*[@id=\"searchboxInc\"]/div[1]/div/div/div[1]/div[2]/div[2]/div[2]/div[2]/div/div[2]")
+    @FindBy(xpath = "//*[@id=\"searchboxInc\"]/div[1]/div/div/div[1]/div[2]/div/div/div/div/div[2]/div[2]/div/div[2]")
     private WebElement UpperDotOnBudgetLine;
-    @FindBy(xpath = "//*[@id=\"searchboxInc\"]/div[1]/div/div/div[1]/div[2]/div[2]/div[2]/div[1]/span[14]")
+    @FindBy(xpath = "//*[@id=\"searchboxInc\"]/div[1]/div/div/div[1]/div[2]/div/div/div/div/div[2]/div[1]/span[22]")
     private WebElement TargetDotOnBudgetLine;
 
 
@@ -33,7 +33,7 @@ public class SearchResultPage {
     private WebElement titlleafterChangingParam;
 
     //For add to favourite
-    @FindBy(xpath = "/html/body/div[3]/div/div[4]/div[1]/div[1]/div[4]/div[4]/div[1]/div/div/div/div[5]/div[2]/div[1]/div[1]/div/div[2]/span/button")
+    @FindBy(xpath = "//*[@id=\"search_results_table\"]/div[1]/div/div/div/div[5]/div[5]/div[1]/div[1]/div/div[2]/span/button")
     private WebElement addToFavouriteIcon;
 
     private WebDriver driver;
@@ -58,6 +58,10 @@ public class SearchResultPage {
         cityNameField.sendKeys("Kyiv");
         submitChangesButton.click();
     }
+    public boolean verifyChangeParam(){
+        String resultStringAfterChangingParam = driver.findElement(By.xpath("//*[@id=\"right\"]/div[1]/div/div/div/h1")).getText();
+        return resultStringAfterChangingParam.contains("Kyiv");
+    }
 
     // for adding to favorite
     public void  AddToFavorites(){
@@ -68,10 +72,10 @@ public class SearchResultPage {
     public void SetBudget(){
         SetYourOwnBudgetButton.click();
         Actions action = new Actions(driver);
-        action.dragAndDrop(UpperDotOnBudgetLine, TargetDotOnBudgetLine).build().perform();
+        action.clickAndHold(UpperDotOnBudgetLine).moveToElement(TargetDotOnBudgetLine).release().build().perform();
     }
 
     public Boolean ConfirmUserSetBudget(){
         return SelectedBudgetInfo.isDisplayed();
-        }
+    }
 }

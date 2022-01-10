@@ -28,8 +28,7 @@ public class SignInTest {
         signInPage = new SignInPage(driver);
         signInPage.enterEmail(TestResources.getProperty("email"));
         signInPage.signIn();
-        String DoesMessageAppearce = accountSignInPage.ConfirmSignIn().toString();
-        Assert.assertEquals(TestResources.getProperty("confirm"),DoesMessageAppearce );
+        Assert.assertTrue(accountSignInPage.ConfirmSignIn());
     }
 
     @AfterClass

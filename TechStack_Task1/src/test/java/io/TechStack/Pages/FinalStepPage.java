@@ -16,10 +16,6 @@ public class FinalStepPage {
         this.driver = driver;
     }
     public Boolean ConfirmUserFillBookForm() {
-        if (adressForm.isDisplayed()) {
-            return true;
-        } else {
-            return false;
-        }
+        return adressForm.isDisplayed();
     }
 }

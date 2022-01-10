@@ -18,7 +18,7 @@ public class EnterYourInfoToBookTheRoomPage {
     private WebElement EmailInput;
     @FindBy(xpath = "//*[@id=\"email_confirm\"]")
     private WebElement ConfirmEmailInput;
-    @FindBy(xpath = "//*[@id=\"bookForm\"]/div[4]/div/div[2]/button")
+    @FindBy(css = "#bookForm > div.bui-group.bui-spacer--large > div > div:nth-child(3) > button > span.bui-button__text.js-button__text")
     private WebElement SubmitFormButton;
 
     private WebDriver driver;
@@ -39,6 +39,6 @@ public class EnterYourInfoToBookTheRoomPage {
         LastNameInput.sendKeys("Lastname");
         EmailInput.sendKeys("testemail@gmail.com");
         ConfirmEmailInput.sendKeys("testemail@gmail.com");
-        driver.findElement(By.xpath("//*[@id=\"bookForm\"]/div[4]/div/div[2]/button")).submit();
+        SubmitFormButton.submit();
     }
 }

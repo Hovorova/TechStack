@@ -6,9 +6,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class AccountSignInPage {
-
     @FindBy(xpath = "//*[@id=\"root\"]/div/div/div[2]/div[1]/div/div/div/div/div/div/div")
     private WebElement linkSentUnit;
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div[2]/div[1]")
+    private WebElement sendPassword;
 
     private WebDriver driver;
 
@@ -18,10 +19,6 @@ public class AccountSignInPage {
     }
 
     public Boolean ConfirmSignIn(){
-        if(linkSentUnit.isDisplayed()) {
-            return true;
-        } else {
-            return false;
-        }
+        return (linkSentUnit.isSelected() || sendPassword.isDisplayed());
     }
 }

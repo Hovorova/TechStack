@@ -38,13 +38,11 @@ public class SelectRoomForBookingAndFillingFormTest {
         enterYourInfoToBookTheRoomPage = new EnterYourInfoToBookTheRoomPage(driver);
         finalStepPage = new FinalStepPage(driver);
         enterYourInfoToBookTheRoomPage.FillTheBookForm();
-        String DoesAdressFormAppear = finalStepPage.ConfirmUserFillBookForm().toString();
-        Assert.assertEquals(TestResources.getProperty("confirm"),DoesAdressFormAppear );
+        Assert.assertTrue(finalStepPage.ConfirmUserFillBookForm());
     }
 
     @AfterClass
     public static void teardown() {
         driver.quit();
     }
-
 }
