@@ -10,6 +10,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class SearchTest {
     private static MainPage mainPage;
@@ -19,12 +20,12 @@ public class SearchTest {
     @BeforeClass
     public static void setup(){
         driver = DriverHelper.getDriver();
+        driver.get(TestResources.getProperty("mainPage"));
+        mainPage =  new MainPage(driver);
     }
 
     @Test
     public void SearchTest(){
-        driver.get(TestResources.getProperty("mainPage"));
-        mainPage = new MainPage(driver);
         searchResultPage = new SearchResultPage(driver);
         mainPage.ChangeLanguage("English");
         mainPage.Search();
@@ -33,11 +34,14 @@ public class SearchTest {
     }
 
     @Test
-    public void CheckTagnameOfWhereAreYouGoingFieldTest(){
-        driver.get(TestResources.getProperty("mainPage"));
-        mainPage =  new MainPage(driver);
-        Assert.assertEquals(true, mainPage.IsInputWhereAreYouGoingFieldTagname());
-        Assert.assertEquals(true, mainPage.IsInputWhereareYouGoingFieldAttribute());
+    public void TagnameOfCityInputTest(){
+        Assert.assertTrue(mainPage.elementInputCityTagnameAndAttribute());
+    }
+
+    @Test
+    public void TagName(){
+        WebElement CityInput =  driver.findElement(By.xpath("//*[@id=\"ss\"]"));
+        Assert.assertEquals("input", mainPage.GetElementTagName(CityInput));
     }
 
     @AfterClass

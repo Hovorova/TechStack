@@ -6,8 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class FinalStepPage {
-    @FindBy(xpath = "//*[@id=\"bookForm\"]/div[1]")
-    private WebElement adressForm;
+    @FindBy(xpath = ".//div[contains(text(),'Almost done!')]")
+    private WebElement successfullBanner;
     @FindBy(xpath = "//*[@id=\"retain-leaving-users__modal\"]/div/div/header")
     private WebElement popupWindowMoreInfo;
 
@@ -17,8 +17,8 @@ public class FinalStepPage {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
+
     public Boolean ConfirmUserFillBookForm() {
-        return (adressForm.isDisplayed() || popupWindowMoreInfo.isDisplayed());
-        // return adressForm.isDisplayed();
+        return (successfullBanner.isDisplayed() || popupWindowMoreInfo.isDisplayed());
     }
 }

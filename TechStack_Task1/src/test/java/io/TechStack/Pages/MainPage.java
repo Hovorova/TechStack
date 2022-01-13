@@ -5,16 +5,10 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.ArrayList;
-
 public class MainPage {
 
     @FindBy(xpath = "//*[@id=\"profile-menu-trigger--title\"]")
     private WebElement username;
-    @FindBy(xpath = "//*[@id=\"b2indexPage\"]/header/nav[1]/div[2]/div[6]/div/div/div/ul/form/li/button")
-    private WebElement logout;
-
-    //For ChangeLanguageTest
     @FindBy(xpath = "//*[@id=\"b2indexPage\"]/header/nav[1]/div[2]/div[2]/button")
     private WebElement changeLanguageButton;
     @FindBy(xpath = "//*[@id=\"language-selection\"]/div/div/div/div/div/div[1]/div/div[2]/div/ul/div[1]/ul/li[2]/a")
@@ -22,15 +16,13 @@ public class MainPage {
     @FindBy(xpath = "//*[@id=\"language-selection\"]/div/div/div/div/div/div[2]/div/div[2]/div/div/div[7]/ul/li[1]/a")
     private WebElement russianIcon;
     @FindBy(xpath = "//*[@id=\"language-selection\"]/div/div/div/div/div/div[2]/div/div[2]/div/div/div[8]/ul/li[4]/a")
-    private  WebElement ukrainianIcon;
+    private WebElement ukrainianIcon;
     @FindBy(xpath = "//*[@id=\"language-selection\"]/div/div/div/div/div/div[2]/div/div[2]/div/div/div[6]/ul/li[3]/a")
     private WebElement polskiIcon;
     @FindBy(xpath = "//*[@id=\"frm\"]/div[1]/div[4]/div[2]/button/span[1]")
     private WebElement stringTitle;
-
-    //For Search Places
     @FindBy(xpath = "//*[@id=\"ss\"]")
-    private WebElement whereAreYouGoingInput;
+    private WebElement CityInput;
     @FindBy(xpath = "//*[@id=\"frm\"]/div[1]/div[2]/div[1]/div[2]/div/div/div/div/span")
     private WebElement CheckInButton;
     @FindBy(xpath = "//*[@id=\"frm\"]/div[1]/div[2]/div[2]/div/div/div[3]/div[1]/table/tbody/tr[5]/td[5]/span/span")
@@ -39,8 +31,6 @@ public class MainPage {
     private WebElement dateCheckOut;
     @FindBy(xpath = "//*[@id=\"frm\"]/div[1]/div[4]/div[2]/button")
     private WebElement searchButton;
-
-    //For changing currency
     @FindBy(xpath = "//*[@id=\"b2indexPage\"]/header/nav[1]/div[2]/div[1]/button")
     private WebElement changeCurrencyButton;
     @FindBy(partialLinkText = "EUR")
@@ -55,26 +45,26 @@ public class MainPage {
     // For getSizeAndLocationOfSignInButton
     @FindBy(css = "#b2indexPage > header > nav.bui-header__bar > div.bui-group.bui-button-group.bui-group--inline.bui-group--align-end.bui-group--vertical-align-middle > div:nth-child(6) > a")
     private WebElement signInButton;
+    @FindBy(xpath = ".//a[@class='bui-button bui-button--light bui-traveller-header__product-action']")
+    private WebElement ListYourPropertyButton;
+    @FindBy(css = "#b2indexPage > header > nav.bui-header__bar > div.bui-group.bui-button-group.bui-group--inline.bui-group--align-end.bui-group--vertical-align-middle > div:nth-child(5) > a")
+    private WebElement RegisterButton;
 
 
     private WebDriver driver;
 
-    public MainPage(WebDriver driver){
+    public MainPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
-    public String getUserName(){
+
+    public String getUserName() {
         return username.getText();
     }
-    public void logout(){
-        username.click();
-        logout.click();
-    }
 
-    //For changing language
-    public void ChangeLanguage(String language){
+    public void ChangeLanguage(String language) {
         changeLanguageButton.click();
-        switch (language){
+        switch (language) {
             case "English":
                 englishIcon.click();
                 break;
@@ -90,7 +80,6 @@ public class MainPage {
         }
     }
 
-    // For changing currency
     public void ChangeCurrency(String currency) {
         Actions action = new Actions(driver);
         changeCurrencyButton.click();
@@ -111,36 +100,36 @@ public class MainPage {
         }
     }
 
-    //For Search
-    public void Search(){
-        whereAreYouGoingInput.clear();
-        whereAreYouGoingInput.sendKeys("Kharkiv");
+    public void Search() {
+        CityInput.clear();
+        CityInput.sendKeys("Kharkiv");
         CheckInButton.click();
         dateCheckIn.click();
         dateCheckOut.click();
         searchButton.click();
     }
 
-    // For getSizeAndLocationOfSignInButton
-    public Dimension getSizeOfSignInButton(){
+    public Dimension getSizeOfSignInButton() {
         return signInButton.getSize();
     }
-    public Point getLocationOfSignInButton(){
+
+    public Point getLocationOfSignInButton() {
         return signInButton.getLocation();
     }
 
-    //For getCssValueTest
-    public String getCssValueOfSignInButton(){
-        return signInButton.getCssValue("background-color");
+    public boolean DistanceBetweenButtons(){
+        int dimensionForSecondSpace = signInButton.getLocation().getX() - RegisterButton.getLocation().getX() - RegisterButton.getSize().getWidth();
+        int dimensionForFirstSpace = RegisterButton.getLocation().getX() - ListYourPropertyButton.getLocation().getX() - ListYourPropertyButton.getSize().getWidth();
+        return dimensionForFirstSpace == dimensionForSecondSpace;
     }
 
-    //For checking tagname and attribute of WhereAreYouGoingInput field
-    public boolean IsInputWhereAreYouGoingFieldTagname(){
-        boolean tagIsInput = "input".equals(whereAreYouGoingInput.getTagName());
-        return tagIsInput;
+    public Boolean elementInputCityTagnameAndAttribute() {
+        boolean tagIsInput = "input".equals(CityInput.getTagName());
+        boolean attributeWhereAreYouGoingCity = "search".equals(CityInput.getAttribute("type"));
+        return tagIsInput & attributeWhereAreYouGoingCity;
     }
-    public boolean IsInputWhereareYouGoingFieldAttribute(){
-        boolean attributeWhereAreYouGoing = "search".equals(whereAreYouGoingInput.getAttribute("type"));
-        return attributeWhereAreYouGoing;
+
+    public String GetElementTagName(WebElement element) {
+        return element.getTagName();
     }
 }

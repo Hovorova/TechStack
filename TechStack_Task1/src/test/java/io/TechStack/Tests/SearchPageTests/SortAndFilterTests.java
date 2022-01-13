@@ -7,7 +7,9 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class SortAndFilterTests {
     private static SearchResultPage searchResultPage;
@@ -16,20 +18,19 @@ public class SortAndFilterTests {
     @BeforeClass
     public static void setup() {
         driver = DriverHelper.getDriver();
+        driver.get(TestResources.getProperty("searchResultPage"));
+        searchResultPage = new SearchResultPage(driver);
     }
 
     @Test
     public void SortByLowerPriceTest() {
-        driver.get(TestResources.getProperty("searchResultPage"));
-        searchResultPage = new SearchResultPage(driver);
-        searchResultPage.SortByPrice();
-        Assert.assertTrue(searchResultPage.ButtonFromLowestPriceIsEnabled());
+        WebElement fromLowestPrice = driver.findElement(By.xpath("//*[@id=\"ajaxsrwrap\"]/div[2]/div/div/div[2]/ul/li[3]/a"));
+        fromLowestPrice.click();
+        Assert.assertTrue(fromLowestPrice.isEnabled());
     }
 
     @Test
     public void FilterSetYourBudgetTest() {
-        driver.get(TestResources.getProperty("searchResultPage"));
-        searchResultPage = new SearchResultPage(driver);
         searchResultPage.SetBudget();
         Assert.assertTrue(searchResultPage.ConfirmUserSetBudget());
     }
