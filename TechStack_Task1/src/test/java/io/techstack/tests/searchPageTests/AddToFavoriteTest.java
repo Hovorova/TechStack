@@ -1,8 +1,8 @@
-package io.TechStack.Tests.SearchPageTests;
+package io.techstack.tests.searchPageTests;
 
-import io.TechStack.BeforeActionAndTestResources.DriverHelper;
-import io.TechStack.BeforeActionAndTestResources.TestResources;
-import io.TechStack.Pages.SearchResultPage;
+import io.techstack.beforeActionAndTestResources.DriverHelper;
+import io.techstack.beforeActionAndTestResources.TestResources;
+import io.techstack.pages.SearchResultPage;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -10,27 +10,25 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import static org.junit.Assert.assertTrue;
-
 public class AddToFavoriteTest {
     private static SearchResultPage searchResultPage;
     private static WebDriver driver;
 
     @BeforeClass
-    public static void setup(){
+    public static void setup() {
         driver = DriverHelper.getDriver();
     }
 
     @Test
-    public void AddToFavTest(){
+    public void addToFavTest() {
         driver.get(TestResources.getProperty("searchResultPage"));
         searchResultPage = new SearchResultPage(driver);
-        searchResultPage.AddToFavorites();
+        searchResultPage.addToFavorites();
         Assert.assertTrue(driver.findElement(By.linkText("My next trip")).isDisplayed());
     }
 
     @AfterClass
-    public static void teardown(){
+    public static void teardown() {
         driver.quit();
     }
 }

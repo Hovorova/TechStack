@@ -1,8 +1,8 @@
-package io.TechStack.Tests.SearchPageTests;
+package io.techstack.tests.searchPageTests;
 
-import io.TechStack.BeforeActionAndTestResources.DriverHelper;
-import io.TechStack.BeforeActionAndTestResources.TestResources;
-import io.TechStack.Pages.SearchResultPage;
+import io.techstack.beforeActionAndTestResources.DriverHelper;
+import io.techstack.beforeActionAndTestResources.TestResources;
+import io.techstack.pages.SearchResultPage;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -14,21 +14,23 @@ public class ChangingSearchParamTest {
     private static WebDriver driver;
 
     @BeforeClass
-    public static void setup(){
+    public static void setup() {
         driver = DriverHelper.getDriver();
     }
 
     @Test
-    public void ChangingSearchParam() {
+    public void changingSearchParam() {
         driver.get(TestResources.getProperty("searchResultPage"));
         driver.get(TestResources.getProperty("afterChangingParamPage"));
         searchResultPage = new SearchResultPage(driver);
-        searchResultPage.ChangeParam();
-        Assert.assertTrue(searchResultPage.verifyChangeParam());
+
+        String cityName = "Kyiv";
+        searchResultPage.changeParam(cityName);
+        Assert.assertTrue(searchResultPage.verifyChangeParam(cityName));
     }
 
     @AfterClass
-    public static void teardown(){
+    public static void teardown() {
         driver.quit();
     }
 }

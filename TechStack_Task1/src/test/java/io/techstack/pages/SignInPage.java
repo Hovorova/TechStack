@@ -1,4 +1,4 @@
-package io.TechStack.Pages;
+package io.techstack.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,14 +13,16 @@ public class SignInPage {
 
     private WebDriver driver;
 
-    public SignInPage(WebDriver driver){
+    public SignInPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
-    public void enterEmail(String input){
+
+    public void enterEmail(String input) {
         email.sendKeys(input);
     }
-    public void signIn(){
+
+    public void signIn() {
         continueWithEmailButton.click();
     }
 }

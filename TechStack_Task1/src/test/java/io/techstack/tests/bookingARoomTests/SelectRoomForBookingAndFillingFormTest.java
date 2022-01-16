@@ -1,15 +1,17 @@
-package io.TechStack.Tests.BookingARoomTests;
+package io.techstack.tests.bookingARoomTests;
 
-import io.TechStack.BeforeActionAndTestResources.DriverHelper;
-import io.TechStack.BeforeActionAndTestResources.TestResources;
-import io.TechStack.Pages.EnterYourInfoToBookTheRoomPage;
-import io.TechStack.Pages.FinalStepPage;
-import io.TechStack.Pages.HotelPage;
+import io.techstack.beforeActionAndTestResources.DriverHelper;
+import io.techstack.beforeActionAndTestResources.TestResources;
+import io.techstack.pages.EnterYourInfoToBookTheRoomPage;
+import io.techstack.pages.FinalStepPage;
+import io.techstack.pages.HotelPage;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
+
+import static org.junit.Assert.assertTrue;
 
 public class SelectRoomForBookingAndFillingFormTest {
     private static HotelPage hotelPage;
@@ -23,21 +25,21 @@ public class SelectRoomForBookingAndFillingFormTest {
     }
 
     @Test
-    public void SelectRoomTest() {
+    public void selectRoomTest() {
         driver.get(TestResources.getProperty("hotelPage"));
         hotelPage = new HotelPage(driver);
         enterYourInfoToBookTheRoomPage = new EnterYourInfoToBookTheRoomPage(driver);
         hotelPage.handleDropDownListAndSubmitReserve();
-        Assert.assertTrue(enterYourInfoToBookTheRoomPage.ConfirmUserHasSelectedTheRoom());
+        assertTrue(enterYourInfoToBookTheRoomPage.confirmUserHasSelectedTheRoom());
     }
 
     @Test
-    public void FillingBookingFormTest(){
+    public void fillingBookingFormTest() {
         driver.get(TestResources.getProperty("bookFormPage"));
         enterYourInfoToBookTheRoomPage = new EnterYourInfoToBookTheRoomPage(driver);
         finalStepPage = new FinalStepPage(driver);
-        enterYourInfoToBookTheRoomPage.FillTheBookForm();
-        Assert.assertTrue(finalStepPage.ConfirmUserFillBookForm());
+        enterYourInfoToBookTheRoomPage.fillTheBookForm();
+        assertTrue(finalStepPage.confirmUserFillBookForm());
     }
 
     @AfterClass
