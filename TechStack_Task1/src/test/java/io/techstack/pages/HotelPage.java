@@ -1,4 +1,4 @@
-package io.TechStack.Pages;
+package io.techstack.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -11,20 +11,21 @@ import org.openqa.selenium.support.ui.Select;
 
 public class HotelPage {
     @FindBy(xpath = "//*[@id=\"hprt_nos_select_803467301_341664530_3_0_0\"]")
-    private WebElement SelectRoomDropDown;
+    private WebElement selectRoomDropDown;
     @FindBy(xpath = "//*[@id=\"hprt_nos_select_803467301_341664530_3_0_0\"]/option[2]")
-    private WebElement SelectOption;
+    private WebElement selectOption;
 
     private WebDriver driver;
 
-    public HotelPage(WebDriver driver){
+    public HotelPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
-    public void handleDropDownListAndSubmitReserve(){
-        JavascriptExecutor js = (JavascriptExecutor)driver;
-        js.executeScript("arguments[0].scrollIntoView();", SelectRoomDropDown);
-        Select objSelect = new Select(SelectRoomDropDown);
+
+    public void handleDropDownListAndSubmitReserve() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();", selectRoomDropDown);
+        Select objSelect = new Select(selectRoomDropDown);
         objSelect.selectByValue("1");
         Actions action = new Actions(driver);
         action.click(driver.findElement(By.cssSelector("span[class='bui-button__text js-reservation-button__text']"))).build().perform();

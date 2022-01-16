@@ -1,4 +1,4 @@
-package io.TechStack.Pages;
+package io.techstack.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,7 +18,7 @@ public class AccountSignInPage {
         this.driver = driver;
     }
 
-    public Boolean ConfirmSignIn(){
+    public boolean confirmSignIn(){
         return (linkSentUnit.isSelected() || sendPassword.isDisplayed());
     }
 }

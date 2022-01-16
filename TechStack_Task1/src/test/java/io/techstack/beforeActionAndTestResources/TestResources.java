@@ -1,4 +1,4 @@
-package io.TechStack.BeforeActionAndTestResources;
+package io.techstack.beforeActionAndTestResources;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -6,8 +6,8 @@ import java.util.Properties;
 
 public class TestResources {
     private static final String TEST_RESOURCE = "src/test/resources/TestResources.properties";
-    protected static FileInputStream fileInputStream;
-    protected static Properties properties;
+    private static FileInputStream fileInputStream;
+    private static Properties properties;
 
     static {
         try {
@@ -21,7 +21,7 @@ public class TestResources {
                 try {
                     fileInputStream.close();
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    throw new RuntimeException("Can not close input stream", e);
                 }
         }
     }
