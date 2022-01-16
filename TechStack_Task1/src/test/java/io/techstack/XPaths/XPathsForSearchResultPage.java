@@ -1,4 +1,4 @@
-package io.TechStack.XPaths;
+package io.techstack.XPaths;
 
 
 import org.openqa.selenium.WebElement;
