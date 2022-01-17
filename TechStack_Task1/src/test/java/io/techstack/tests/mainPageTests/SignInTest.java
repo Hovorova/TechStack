@@ -37,11 +37,11 @@ public class SignInTest {
         accountSignInPage = new AccountSignInPage(driver);
         signInPage = new SignInPage(driver);
         signInPage.enterEmail(TestResources.getProperty("email"));
-        if(driver.getCurrentUrl() == TestResources.getProperty("signInEnterPassword")){
+        if (driver.getCurrentUrl() == TestResources.getProperty("signInEnterPassword")) {
             driver.findElement(By.xpath(".//input[@name='new_password']")).sendKeys("testPassword123");
             driver.findElement(By.xpath(".//input[@name='confirmed_password']")).sendKeys("testPassword123");
             assertTrue(driver.findElement(By.xpath(".//div[@class='bui-avatar-block']")).isDisplayed());
-        }else {
+        } else {
             signInPage.signIn();
             assertTrue(accountSignInPage.confirmSignIn());
         }

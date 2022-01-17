@@ -19,7 +19,7 @@ public class HotelPage {
     private WebElement selectOption;
 
     @FindBy(xpath = ".//div[@class='k2-hp--gallery-header bui-grid__column bui-grid__column-9']")
-    private  WebElement hotelGallery;
+    private WebElement hotelGallery;
 
     private WebDriver driver;
 

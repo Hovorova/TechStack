@@ -29,7 +29,7 @@ public class AddToFavoriteTest {
         WaitUtils.fluentWaitElementToBeVisible(driver, addToFavoriteButton);
         addToFavoriteButton.click();
         WebElement savedToFavoriteMessage = searchResultPage.getSuccesfullyAddedToFavoritesBanner();
-        WaitUtils.fluentWaitElementToBeVisible(driver, savedToFavoriteMessage );
+        WaitUtils.fluentWaitElementToBeVisible(driver, savedToFavoriteMessage);
         Assert.assertTrue(savedToFavoriteMessage.isDisplayed());
     }
 

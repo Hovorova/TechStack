@@ -62,7 +62,7 @@ public class MainPage {
     private WebElement currencyRuble;
 
     @FindBy(xpath = ".//div[contains(@class,'bui-group bui-button-group')]")
-    private  WebElement mainMenu;
+    private WebElement mainMenu;
 
     @FindBy(xpath = ".//a[@class='bui-button bui-button--secondary js-header-login-link']")
     private WebElement signInButton;

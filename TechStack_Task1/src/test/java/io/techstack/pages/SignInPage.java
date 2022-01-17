@@ -16,7 +16,7 @@ public class SignInPage {
 
     private WebDriver driver;
 
-    public SignInPage(WebDriver driver){
+    public SignInPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
@@ -24,7 +24,8 @@ public class SignInPage {
     public void enterEmail(String input) {
         email.sendKeys(input);
     }
-    public void signIn(){
+
+    public void signIn() {
         continueWithEmailButton.click();
     }
 }
