@@ -123,10 +123,10 @@ public class MainPage {
         return dimensionForFirstSpace == dimensionForSecondSpace;
     }
 
-    public boolean elementInputCityTagnameAndAttribute() {
-        boolean tagIsInput = "input".equals(cityInput.getTagName());
-        boolean attributeWhereAreYouGoingCity = "search".equals(cityInput.getAttribute("type"));
-        return tagIsInput & attributeWhereAreYouGoingCity;
+    public boolean elementTagnameIsInputAndAttributeIsSearch(WebElement element) {
+        boolean tagIsInput = "input".equals(element.getTagName());
+        boolean attributeWhereAreYouGoingCity = "search".equals(element.getAttribute("type"));
+        return tagIsInput && attributeWhereAreYouGoingCity;
     }
 
     public String getElementTagName(WebElement element) {
