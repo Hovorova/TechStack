@@ -18,6 +18,7 @@ public class ChangingSearchParamTest {
     @BeforeClass
     public static void setup() {
         driver = DriverHelper.getDriver();
+        WaitUtils.implicitWait(driver);
     }
 
     @Test

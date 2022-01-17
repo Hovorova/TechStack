@@ -2,6 +2,7 @@ package io.techstack.tests.mainPageTests;
 
 import io.techstack.beforeActionAndTestResources.DriverHelper;
 import io.techstack.beforeActionAndTestResources.TestResources;
+import io.techstack.beforeActionAndTestResources.WaitUtils;
 import io.techstack.pages.AccountSignInPage;
 import io.techstack.pages.MainPage;
 import io.techstack.pages.SignInPage;
@@ -25,6 +26,7 @@ public class SignInTest {
         driver = DriverHelper.getDriver();
         driver.get(TestResources.getProperty("mainPage"));
         mainpage = new MainPage(driver);
+        WaitUtils.implicitWait(driver);
     }
 
     @Test

@@ -2,6 +2,7 @@ package io.techstack.tests.bookingARoomTests;
 
 import io.techstack.beforeActionAndTestResources.DriverHelper;
 import io.techstack.beforeActionAndTestResources.TestResources;
+import io.techstack.beforeActionAndTestResources.WaitUtils;
 import io.techstack.pages.EnterYourInfoToBookTheRoomPage;
 import io.techstack.pages.FinalStepPage;
 import io.techstack.pages.HotelPage;
@@ -22,6 +23,7 @@ public class SelectRoomForBookingAndFillingFormTest {
     @BeforeClass
     public static void setup() {
         driver = DriverHelper.getDriver();
+        WaitUtils.implicitWait(driver);
     }
 
     @Test
