@@ -7,7 +7,6 @@ import io.techstack.pages.MainPage;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import static org.junit.Assert.assertEquals;
@@ -27,7 +26,7 @@ public class ChangeLanguageAndCurrencyTest {
     @Test
     public void changeLanguageTest() {
         mainPage.changeLanguage("Polski");
-        String currentLanguage = driver.findElement(By.xpath("//*[@id=\"frm\"]/div[1]/div[4]/div[2]/button/span[1]")).getText();
+        String currentLanguage = mainPage.getSearchButton().getText();
         assertEquals(TestResources.getProperty("polski"), currentLanguage);
 
     }
@@ -35,7 +34,7 @@ public class ChangeLanguageAndCurrencyTest {
     @Test
     public void changeCurrencyTest() {
         mainPage.changeCurrency("Dollar");
-        String currentCurrency = driver.findElement(By.xpath("//*[@id=\"b2indexPage\"]/header/nav[1]/div[2]/div[1]/button")).getText();
+        String currentCurrency = mainPage.getChangeCurrencyButton().getText();
         assertEquals("USD\n" + "Выберите валюту. Текущая валюта — Доллар США", currentCurrency);
     }
 

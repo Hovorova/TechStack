@@ -50,9 +50,9 @@ public class SignInTest {
     @Test
     public void destinationBetweenButtonShouldBeEquals() {
         ArrayList<WebElement> mainMenuButtons = new ArrayList<WebElement>();
-        WebElement signInButton = driver.findElement(By.cssSelector("#b2indexPage > header > nav.bui-header__bar > div.bui-group.bui-button-group.bui-group--inline.bui-group--align-end.bui-group--vertical-align-middle > div:nth-child(6) > a"));
-        WebElement listYourPropertyButton = driver.findElement(By.xpath(".//a[@class='bui-button bui-button--light bui-traveller-header__product-action']"));
-        WebElement registerButton = driver.findElement(By.cssSelector("#b2indexPage > header > nav.bui-header__bar > div.bui-group.bui-button-group.bui-group--inline.bui-group--align-end.bui-group--vertical-align-middle > div:nth-child(5) > a"));
+        WebElement signInButton = mainpage.getSignInButton();
+        WebElement listYourPropertyButton = mainpage.getListYourProperty();
+        WebElement registerButton = mainpage.getRegisterButton();
         mainMenuButtons.add(signInButton);
         mainMenuButtons.add(listYourPropertyButton);
         mainMenuButtons.add(registerButton);

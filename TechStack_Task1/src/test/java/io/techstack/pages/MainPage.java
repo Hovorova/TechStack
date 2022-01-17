@@ -1,11 +1,13 @@
 package io.techstack.pages;
 
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+@Getter
 public class MainPage {
 
     @FindBy(xpath = "//*[@id=\"profile-menu-trigger--title\"]")
@@ -29,7 +31,7 @@ public class MainPage {
     @FindBy(xpath = "//*[@id=\"frm\"]/div[1]/div[4]/div[2]/button/span[1]")
     private WebElement stringTitle;
 
-    @FindBy(xpath = "//*[@id=\"ss\"]")
+    @FindBy(xpath = ".//input[@type='search']")
     private WebElement cityInput;
 
     @FindBy(xpath = "//*[@id=\"frm\"]/div[1]/div[2]/div[1]/div[2]/div/div/div/div/span")
@@ -41,10 +43,10 @@ public class MainPage {
     @FindBy(xpath = "//*[@id=\"frm\"]/div[1]/div[2]/div[2]/div/div/div[3]/div[1]/table/tbody/tr[5]/td[7]/span/span")
     private WebElement dateCheckOut;
 
-    @FindBy(xpath = "//*[@id=\"frm\"]/div[1]/div[4]/div[2]/button")
+    @FindBy(xpath = ".//button[@data-sb-id='main']")
     private WebElement searchButton;
 
-    @FindBy(xpath = "//*[@id=\"b2indexPage\"]/header/nav[1]/div[2]/div[1]/button")
+    @FindBy(xpath = ".//button[@data-modal-header-async-type='currencyDesktop']")
     private WebElement changeCurrencyButton;
 
     @FindBy(partialLinkText = "EUR")
@@ -58,6 +60,18 @@ public class MainPage {
 
     @FindBy(partialLinkText = "RUB")
     private WebElement currencyRuble;
+
+    @FindBy(xpath = ".//div[contains(@class,'bui-group bui-button-group')]")
+    private  WebElement mainMenu;
+
+    @FindBy(xpath = ".//a[@class='bui-button bui-button--secondary js-header-login-link']")
+    private WebElement signInButton;
+
+    @FindBy(xpath = ".//a[contains(@class,'bui-button bui-button--light bui-tr')]")
+    private WebElement registerButton;
+
+    @FindBy(xpath = ".//a[@class='bui-button bui-button--light bui-traveller-header__product-action']")
+    private WebElement ListYourProperty;
 
     private WebDriver driver;
 

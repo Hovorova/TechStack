@@ -8,7 +8,6 @@ import io.techstack.pages.SearchResultPage;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -24,7 +23,7 @@ public class SearchTest {
         driver = DriverHelper.getDriver();
         driver.get(TestResources.getProperty("mainPage"));
         mainPage = new MainPage(driver);
-        WaitUtils.waitForElementToBeVisible(driver, driver.findElement(By.xpath(".//div[@class='bui-group bui-button-group bui-group--inline bui-group--align-end bui-group--vertical-align-middle']")));
+        WaitUtils.waitForElementToBeVisible(driver, mainPage.getMainMenu());
     }
 
     @Test
@@ -33,12 +32,12 @@ public class SearchTest {
         mainPage.changeLanguage("English");
         String cityName = "Kharkiv";
         mainPage.search(cityName);
-        assertTrue(driver.findElement(By.xpath(".//h1[@class='_30227359d _0db903e42']")).getText().contains(cityName));
+        assertTrue(searchResultPage.getTitleWithCityName().getText().contains(cityName));
     }
 
     @Test
     public void tagnameAndAttributeTest() {
-        WebElement cityInput = driver.findElement(By.xpath(".//input[@type='search']"));
+        WebElement cityInput = mainPage.getCityInput();
         assertTrue(mainPage.elementTagnameIsInputAndAttributeIsSearch(cityInput));
     }
 

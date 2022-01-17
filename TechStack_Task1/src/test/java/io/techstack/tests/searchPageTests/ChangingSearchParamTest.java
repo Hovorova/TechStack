@@ -23,13 +23,13 @@ public class ChangingSearchParamTest {
     @Test
     public void changingSearchParam() {
         driver.get(TestResources.getProperty("searchResultPage"));
-        WaitUtils.waitForElementToBeVisible(driver, driver.findElement(By.xpath(".//form[@id='frm']")));
+        WaitUtils.waitForElementToBeVisible(driver, searchResultPage.getSideBar());
         driver.get(TestResources.getProperty("afterChangingParamPage"));
         searchResultPage = new SearchResultPage(driver);
 
         String cityName = "Kyiv";
         searchResultPage.changeParam(cityName);
-        Assert.assertTrue(driver.findElement(By.xpath(".//h1[@class='_30227359d _0db903e42']")).getText().contains(cityName));
+        Assert.assertTrue(searchResultPage.getTitleWithCityName().getText().contains(cityName));
     }
 
     @AfterClass

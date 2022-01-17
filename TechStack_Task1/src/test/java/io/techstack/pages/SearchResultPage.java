@@ -1,35 +1,49 @@
 package io.techstack.pages;
 
 import io.techstack.beforeActionAndTestResources.WaitUtils;
+import lombok.Getter;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
 
-import java.time.Duration;
-
+@Getter
 public class SearchResultPage {
     @FindBy(className = "_a48a3fc0e")
     private WebElement setYourOwnBudgetButton;
+
     @FindBy(xpath = ".//span[@class='_af5d9ea85'][1]")
     private WebElement selectedBudgetInfo;
+
     @FindBy(xpath = "//div[@data-testid='filters-group-slider']//div[@role='none'][1]")
     private WebElement upperDotOnBudgetLine;
+
     @FindBy(xpath = "//div[@data-testid='filters-group-slider']//div[@role='none'][2]")
     private WebElement targetDotOnBudgetLine;
+
     @FindBy(xpath = "//*[@id=\"ss\"]")
     private WebElement cityNameField;
+
     @FindBy(xpath = "//*[@id=\"frm\"]/div[5]/div[2]/button")
     private WebElement submitChangesButton;
+
     @FindBy(xpath = "/html/body/div[3]/div/div[4]/div[1]/div[1]/div[4]/div[4]/div[1]/div/div/div/div[5]/div[4]/div[1]/div[2]/div/div[1]/div/div[1]/div/div[1]/div/h3/a/div[1]")
     private WebElement titlleafterChangingParam;
+
     @FindBy(xpath = ".//button[@data-testid='wishlist-button']")
-    private WebElement addToFavouriteIcon;
+    private WebElement addToFavouriteButton;
+
+    @FindBy(xpath = ".//div[@data-testid='wishlist-popover-content']")
+    private WebElement succesfullyAddedToFavoritesBanner;
+
     @FindBy(xpath = ".//h1[@class='_30227359d _0db903e42']")
     private WebElement titleWithCityName;
+
+    @FindBy(xpath = ".//form[@id='frm']")
+    private WebElement sideBar;
+
+    @FindBy(xpath = ".//li[@data-id='price']")
+    private WebElement sortFromLowestPrice;
 
     private WebDriver driver;
 
@@ -45,7 +59,7 @@ public class SearchResultPage {
     }
 
     public void addToFavorites() {
-        addToFavouriteIcon.click();
+        addToFavouriteButton.click();
     }
 
     public void setBudget() {

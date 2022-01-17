@@ -9,7 +9,6 @@ import io.techstack.pages.HotelPage;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import static org.junit.Assert.assertTrue;
@@ -29,7 +28,7 @@ public class SelectRoomForBookingAndFillingFormTest {
     public void selectRoomTest() {
         driver.get(TestResources.getProperty("hotelPage"));
         hotelPage = new HotelPage(driver);
-        WaitUtils.waitForElementToBeClickable(driver, driver.findElement(By.xpath(".//div[@class='k2-hp--gallery-header bui-grid__column bui-grid__column-9']")));
+        WaitUtils.waitForElementToBeClickable(driver, hotelPage.getHotelGallery());
         enterYourInfoToBookTheRoomPage = new EnterYourInfoToBookTheRoomPage(driver);
         hotelPage.handleDropDownListAndSubmitReserve();
         assertTrue(enterYourInfoToBookTheRoomPage.confirmUserHasSelectedTheRoom());
@@ -39,7 +38,7 @@ public class SelectRoomForBookingAndFillingFormTest {
     public void fillingBookingFormTest() {
         driver.get(TestResources.getProperty("bookFormPage"));
         enterYourInfoToBookTheRoomPage = new EnterYourInfoToBookTheRoomPage(driver);
-        WaitUtils.waitForElementToBeClickable(driver, driver.findElement(By.xpath(".//div[@class='bp-personal-details-form']")));
+        WaitUtils.waitForElementToBeClickable(driver, enterYourInfoToBookTheRoomPage.getEnterYourDetailsForm());
         finalStepPage = new FinalStepPage(driver);
         enterYourInfoToBookTheRoomPage.fillTheBookForm();
         assertTrue(finalStepPage.confirmUserFillBookForm());
