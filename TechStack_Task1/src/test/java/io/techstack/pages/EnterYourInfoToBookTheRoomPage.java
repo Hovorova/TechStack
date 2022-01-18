@@ -6,17 +6,22 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class EnterYourInfoToBookTheRoomPage {
-    @FindBy(xpath = "//*[@id=\"bookForm\"]/div[1]")
+    @FindBy(xpath = ".//section[contains(@class,'bui-card bp-card--unit')]")
     private WebElement bookForm;
-    @FindBy(xpath = "//*[@id=\"firstname\"]")
+
+    @FindBy(xpath = ".//input[@name=\"firstname\"]")
     private WebElement firstNameInput;
-    @FindBy(xpath = "//*[@id=\"lastname\"]")
+
+    @FindBy(xpath = ".//input[@name=\"lastname\"]")
     private WebElement lastNameInput;
-    @FindBy(xpath = "//*[@id=\"email\"]")
+
+    @FindBy(xpath = ".//input[@name=\"email\"]")
     private WebElement emailInput;
-    @FindBy(xpath = "//*[@id=\"email_confirm\"]")
+
+    @FindBy(xpath = ".//input[@name=\"email_confirm\"]")
     private WebElement confirmEmailInput;
-    @FindBy(css = "#bookForm > div.bui-group.bui-spacer--large > div > div:nth-child(3) > button > span.bui-button__text.js-button__text")
+
+    @FindBy(xpath = ".//button[@name=\"book\"]")
     private WebElement submitFormButton;
 
     private WebDriver driver;

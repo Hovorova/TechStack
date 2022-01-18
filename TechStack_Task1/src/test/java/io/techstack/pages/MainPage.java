@@ -6,46 +6,41 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
 @Getter
 public class MainPage {
 
-    @FindBy(xpath = "//*[@id=\"profile-menu-trigger--title\"]")
-    private WebElement username;
-
-    @FindBy(xpath = "//*[@id=\"b2indexPage\"]/header/nav[1]/div[2]/div[2]/button")
+    @FindBy(xpath = ".//button[@data-modal-id='language-selection']")
     private WebElement changeLanguageButton;
 
-    @FindBy(xpath = "//*[@id=\"language-selection\"]/div/div/div/div/div/div[1]/div/div[2]/div/ul/div[1]/ul/li[2]/a")
+    @FindBy(xpath = ".//a[@data-lang='en-gb']")
     private WebElement englishIcon;
 
-    @FindBy(xpath = "//*[@id=\"language-selection\"]/div/div/div/div/div/div[2]/div/div[2]/div/div/div[7]/ul/li[1]/a")
+    @FindBy(xpath = ".//a[@data-lang='ru']")
     private WebElement russianIcon;
 
-    @FindBy(xpath = "//*[@id=\"language-selection\"]/div/div/div/div/div/div[2]/div/div[2]/div/div/div[8]/ul/li[4]/a")
+    @FindBy(xpath = ".//a[@data-lang='uk']")
     private WebElement ukrainianIcon;
 
-    @FindBy(xpath = "//*[@id=\"language-selection\"]/div/div/div/div/div/div[2]/div/div[2]/div/div/div[6]/ul/li[3]/a")
+    @FindBy(xpath = ".//a[@data-lang='pl']")
     private WebElement polskiIcon;
 
-    @FindBy(xpath = "//*[@id=\"frm\"]/div[1]/div[4]/div[2]/button/span[1]")
-    private WebElement stringTitle;
-
-    @FindBy(xpath = "//*[@id=\"ss\"]")
-    private WebElement cityInput;
-
-    @FindBy(xpath = "//*[@id=\"frm\"]/div[1]/div[2]/div[1]/div[2]/div/div/div/div/span")
-    private WebElement checkInButton;
-
-    @FindBy(xpath = "//*[@id=\"frm\"]/div[1]/div[2]/div[2]/div/div/div[3]/div[1]/table/tbody/tr[5]/td[5]/span/span")
-    private WebElement dateCheckIn;
-
-    @FindBy(xpath = "//*[@id=\"frm\"]/div[1]/div[2]/div[2]/div/div/div[3]/div[1]/table/tbody/tr[5]/td[7]/span/span")
-    private WebElement dateCheckOut;
-
-    @FindBy(xpath = "//*[@id=\"frm\"]/div[1]/div[4]/div[2]/button")
+    @FindBy(xpath = ".//button[@data-sb-id='main']")
     private WebElement searchButton;
 
-    @FindBy(xpath = "//*[@id=\"b2indexPage\"]/header/nav[1]/div[2]/div[1]/button")
+    @FindBy(xpath = ".//input[@type=\"search\"]")
+    private WebElement cityInput;
+
+    @FindBy(xpath = ".//span[contains(@class,'sb-date-field__icon sb-date')]")
+    private WebElement checkInButton;
+
+    @FindBy(xpath = ".//td[@data-date='2022-01-29']")
+    private WebElement dateCheckIn;
+
+    @FindBy(xpath = ".//td[@data-date='2022-01-30']")
+    private WebElement dateCheckOut;
+
+    @FindBy(xpath = ".//button[@data-modal-header-async-type='currencyDesktop']")
     private WebElement changeCurrencyButton;
 
     @FindBy(partialLinkText = "EUR")
@@ -65,10 +60,6 @@ public class MainPage {
     public MainPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
-    }
-
-    public String getUserName() {
-        return username.getText();
     }
 
     public void changeLanguage(String language) {

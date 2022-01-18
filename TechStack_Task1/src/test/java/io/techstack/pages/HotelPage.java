@@ -10,9 +10,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 public class HotelPage {
-    @FindBy(xpath = "//*[@id=\"hprt_nos_select_803467301_341664530_3_0_0\"]")
+    @FindBy(xpath = ".//select[contains(@class,'hprt-nos-select js-hprt')]")
     private WebElement selectRoomDropDown;
-    @FindBy(xpath = "//*[@id=\"hprt_nos_select_803467301_341664530_3_0_0\"]/option[2]")
+    @FindBy(xpath = ".//select[contains(@class,'hprt-nos-select')]//option[@value='1']")
     private WebElement selectOption;
 
     private WebDriver driver;

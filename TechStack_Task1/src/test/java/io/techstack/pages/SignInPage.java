@@ -8,7 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 public class SignInPage {
     @FindBy(xpath = "//*[@id=\"username\"]")
     private WebElement email;
-    @FindBy(xpath = "/html/body/div/div/div/div[2]/div[1]/div/div/div/div/div/div/form/div[3]/button")
+
+    @FindBy(xpath = ".//button[@type='submit']")
     private WebElement continueWithEmailButton;
 
     private WebDriver driver;
