@@ -1,5 +1,6 @@
 package io.techstack.pages;
 
+import lombok.Getter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -9,12 +10,16 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+@Getter
 public class HotelPage {
     @FindBy(xpath = ".//select[contains(@class,'hprt-nos-select js-hprt')]")
     private WebElement selectRoomDropDown;
 
     @FindBy(xpath = ".//select[contains(@class,'hprt-nos-select')]//option[@value='1']")
     private WebElement selectOption;
+
+    @FindBy(xpath = ".//button[@id='b_tt_holder_1']")
+    private WebElement illReserveButton;
 
     private WebDriver driver;
 

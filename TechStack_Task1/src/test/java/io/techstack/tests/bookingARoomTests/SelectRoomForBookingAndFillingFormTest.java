@@ -31,7 +31,8 @@ public class SelectRoomForBookingAndFillingFormTest {
         hotelPage = new HotelPage(driver);
         enterYourInfoToBookTheRoomPage = new EnterYourInfoToBookTheRoomPage(driver);
         hotelPage.handleDropDownListAndSubmitReserve();
-        assertTrue(enterYourInfoToBookTheRoomPage.confirmUserHasSelectedTheRoom());
+        enterYourInfoToBookTheRoomPage.handlePopUpWindowOtherPeopleIsLookingForThisPlace();
+        assertTrue(enterYourInfoToBookTheRoomPage.getSuccesfulBanner().isDisplayed());
     }
 
     @Test

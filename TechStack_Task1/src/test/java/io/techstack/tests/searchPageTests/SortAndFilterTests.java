@@ -35,7 +35,7 @@ public class SortAndFilterTests {
     @Test
     public void filterSetYourBudgetTest() {
         searchResultPage.setBudget();
-        assertTrue(searchResultPage.confirmUserSetBudget());
+        assertTrue(searchResultPage.getSelectedBudgetInfo().isDisplayed());
     }
 
     @AfterClass

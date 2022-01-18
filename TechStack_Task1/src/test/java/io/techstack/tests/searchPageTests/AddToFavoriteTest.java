@@ -25,7 +25,7 @@ public class AddToFavoriteTest {
     public void addToFavTest() {
         driver.get(TestResources.getProperty("searchResultPage"));
         searchResultPage = new SearchResultPage(driver);
-        searchResultPage.addToFavorites();
+        searchResultPage.getAddToFavouriteIcon().click();
         Assert.assertTrue(driver.findElement(By.linkText("My next trip")).isDisplayed());
     }
 

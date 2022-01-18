@@ -36,8 +36,8 @@ public class SignInTest {
         accountSignInPage = new AccountSignInPage(driver);
         signInPage = new SignInPage(driver);
         signInPage.enterEmail(TestResources.getProperty("email"));
-        signInPage.signIn();
-        assertTrue(accountSignInPage.confirmSignIn());
+        signInPage.getContinueWithEmailButton().click();
+        assertTrue(accountSignInPage.getLinkSentUnit().isSelected() || accountSignInPage.getSendPassword().isDisplayed());
     }
 
     @Test

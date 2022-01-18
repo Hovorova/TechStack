@@ -1,11 +1,13 @@
 package io.techstack.pages;
 
 import io.techstack.beforeActionAndTestResources.WaitUtils;
+import lombok.Getter;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+@Getter
 public class SearchResultPage {
     @FindBy(xpath = ".//span[@class='_a48a3fc0e']")
     private WebElement setYourOwnBudgetButton;
@@ -44,10 +46,6 @@ public class SearchResultPage {
         submitChangesButton.click();
     }
 
-    public void addToFavorites() {
-        addToFavouriteIcon.click();
-    }
-
     public void setBudget() {
         setYourOwnBudgetButton.click();
         Actions action = new Actions(driver);
@@ -55,9 +53,5 @@ public class SearchResultPage {
         js.executeScript("window.scrollBy(0, 200);", upperDotOnBudgetLine);
         WaitUtils.fluentWaitElementToBeVisible(driver, upperDotOnBudgetLine);
         action.dragAndDrop(upperDotOnBudgetLine, targetDotOnBudgetLine).build().perform();
-    }
-
-    public boolean confirmUserSetBudget() {
-        return selectedBudgetInfo.isDisplayed();
     }
 }
