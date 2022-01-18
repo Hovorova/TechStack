@@ -8,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 public class AccountSignInPage {
     @FindBy(xpath = "//*[@id=\"root\"]/div/div/div[2]/div[1]/div/div/div/div/div/div/div")
     private WebElement linkSentUnit;
+
     @FindBy(xpath = "//*[@id=\"root\"]/div/div/div[2]/div[1]")
     private WebElement sendPassword;
 

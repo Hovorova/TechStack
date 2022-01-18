@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.Select;
 public class HotelPage {
     @FindBy(xpath = ".//select[contains(@class,'hprt-nos-select js-hprt')]")
     private WebElement selectRoomDropDown;
+
     @FindBy(xpath = ".//select[contains(@class,'hprt-nos-select')]//option[@value='1']")
     private WebElement selectOption;
 
