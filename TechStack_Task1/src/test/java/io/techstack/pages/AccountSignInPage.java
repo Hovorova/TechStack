@@ -16,12 +16,12 @@ public class AccountSignInPage {
 
     private WebDriver driver;
 
-    public AccountSignInPage(WebDriver driver){
+    public AccountSignInPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
 
-    public boolean confirmSignIn(){
+    public boolean confirmSignIn() {
         return (linkSentUnit.isSelected() || sendPassword.isDisplayed());
     }
 }

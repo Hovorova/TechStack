@@ -11,19 +11,19 @@ public class EnterYourInfoToBookTheRoomPage {
     @FindBy(xpath = ".//section[contains(@class,'bui-card bp-card--unit')]")
     private WebElement bookForm;
 
-    @FindBy(xpath = ".//input[@name=\"firstname\"]")
+    @FindBy(xpath = ".//input[@name='firstname']")
     private WebElement firstNameInput;
 
-    @FindBy(xpath = ".//input[@name=\"lastname\"]")
+    @FindBy(xpath = ".//input[@name='lastname']")
     private WebElement lastNameInput;
 
-    @FindBy(xpath = ".//input[@name=\"email\"]")
+    @FindBy(xpath = ".//input[@name='email']")
     private WebElement emailInput;
 
-    @FindBy(xpath = ".//input[@name=\"email_confirm\"]")
+    @FindBy(xpath = ".//input[@name='email_confirm']")
     private WebElement confirmEmailInput;
 
-    @FindBy(xpath = ".//button[@name=\"book\"]")
+    @FindBy(xpath = ".//button[@name='book']")
     private WebElement submitFormButton;
 
     @FindBy(xpath = ".//div[@class='required_fields_description bui-spacer--large']")
@@ -36,7 +36,7 @@ public class EnterYourInfoToBookTheRoomPage {
         this.driver = driver;
     }
 
-    public FinalStepPage fillTheBookForm(String firstName, String lastName, String  email) {
+    public FinalStepPage fillTheBookForm(String firstName, String lastName, String email) {
         firstNameInput.sendKeys(firstName);
         lastNameInput.sendKeys(lastName);
         emailInput.sendKeys(email);
