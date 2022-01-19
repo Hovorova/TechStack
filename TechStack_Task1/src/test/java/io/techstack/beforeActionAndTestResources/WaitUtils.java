@@ -43,7 +43,7 @@ public class WaitUtils {
         wait.until(ExpectedConditions.visibilityOfAllElements(element));
     }
 
-    public static void implicitWait(WebDriver driver) {
+    public static void  implicitWait(WebDriver driver) {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
     }
 

@@ -12,13 +12,10 @@ import org.openqa.selenium.support.ui.Select;
 
 @Getter
 public class HotelPage {
-    @FindBy(xpath = ".//select[contains(@class,'hprt-nos-select js-hprt')]")
+    @FindBy(xpath = ".//select[contains(@name,'nr_rooms')]")
     private WebElement selectRoomDropDown;
 
-    @FindBy(xpath = ".//select[contains(@class,'hprt-nos-select')]//option[@value='1']")
-    private WebElement selectOption;
-
-    @FindBy(xpath = ".//button[@id='b_tt_holder_1']")
+    @FindBy(xpath = ".//div[contains(@class,'reservation-c')]")
     private WebElement illReserveButton;
 
     private WebDriver driver;
@@ -28,12 +25,13 @@ public class HotelPage {
         this.driver = driver;
     }
 
-    public void handleDropDownListAndSubmitReserve() {
+    public EnterYourInfoToBookTheRoomPage handleDropDownListAndSubmitReserve() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView();", selectRoomDropDown);
         Select objSelect = new Select(selectRoomDropDown);
         objSelect.selectByValue("1");
         Actions action = new Actions(driver);
         action.click(driver.findElement(By.cssSelector("span[class='bui-button__text js-reservation-button__text']"))).build().perform();
+        return new EnterYourInfoToBookTheRoomPage(driver);
     }
 }

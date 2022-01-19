@@ -6,9 +6,19 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import java.text.SimpleDateFormat;
 
 @Getter
 public class MainPage {
+
+    @FindBy(xpath = ".//a[@class='bui-button bui-button--secondary js-header-login-link']")
+    private WebElement signInButton;
+
+    @FindBy(xpath = ".//a[contains(@class,'bui-button bui-button--light bui-tr')]")
+    private WebElement registerButton;
+
+    @FindBy(xpath = ".//a[@class='bui-button bui-button--light bui-traveller-header__product-action']")
+    private WebElement ListYourProperty;
 
     @FindBy(xpath = ".//button[@data-modal-id='language-selection']")
     private WebElement changeLanguageButton;
@@ -28,17 +38,19 @@ public class MainPage {
     @FindBy(xpath = ".//button[@data-sb-id='main']")
     private WebElement searchButton;
 
-    @FindBy(xpath = ".//input[@type=\"search\"]")
+    @FindBy(xpath = ".//input[@type='search']")
     private WebElement cityInput;
 
     @FindBy(xpath = ".//span[contains(@class,'sb-date-field__icon sb-date')]")
     private WebElement checkInButton;
-
+/*
     @FindBy(xpath = ".//td[@data-date='2022-01-29']")
     private WebElement dateCheckIn;
 
     @FindBy(xpath = ".//td[@data-date='2022-01-30']")
     private WebElement dateCheckOut;
+
+ */
 
     @FindBy(xpath = ".//button[@data-modal-header-async-type='currencyDesktop']")
     private WebElement changeCurrencyButton;
@@ -55,11 +67,23 @@ public class MainPage {
     @FindBy(partialLinkText = "RUB")
     private WebElement currencyRuble;
 
+    @FindBy(xpath = ".//span[@class='bui-avatar-block__title']")
+    private WebElement userName;
+
     private WebDriver driver;
 
     public MainPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
+    }
+
+    public SignInPage signIn() {
+        signInButton.click();
+        return new SignInPage(driver);
+    }
+
+    public boolean IsUserSignedIn() {
+        return userName.getText().contains("Your account");
     }
 
     public void changeLanguage(String language) {
@@ -100,13 +124,15 @@ public class MainPage {
         }
     }
 
-    public void search(String cityName) {
+    public SearchResultPage confirmSearch() {
+        searchButton.click();
+        return new SearchResultPage(driver);
+    }
+
+    public void searchInput(String cityName){
         cityInput.clear();
         cityInput.sendKeys(cityName);
         checkInButton.click();
-        dateCheckIn.click();
-        dateCheckOut.click();
-        searchButton.click();
     }
 
     public boolean isDistanceBetweenButtonsEqual(WebElement firstButton, WebElement secondButton, WebElement thirdButton) {
@@ -121,7 +147,8 @@ public class MainPage {
         return tagIsInput & attributeWhereAreYouGoingCity;
     }
 
-    public String getElementTagName(WebElement element) {
-        return element.getTagName();
+    public String createXpathForCheckInAndCheckOutDate(String dateCheckInDate) {
+        String finalStringCheckInDate = ".//td[@data-date='" + dateCheckInDate + "']";
+        return finalStringCheckInDate;
     }
 }

@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 @Getter
 public class SignInPage {
-    @FindBy(xpath = "//*[@id=\"username\"]")
+    @FindBy(xpath = "//*[@id='username']")
     private WebElement email;
 
     @FindBy(xpath = ".//button[@type='submit']")
@@ -21,7 +21,9 @@ public class SignInPage {
         this.driver = driver;
     }
 
-    public void enterEmail(String input) {
+    public AccountSignInPage enterEmail(String input) {
         email.sendKeys(input);
+        continueWithEmailButton.click();
+        return new AccountSignInPage(driver);
     }
 }

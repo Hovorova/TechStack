@@ -26,12 +26,6 @@ public class EnterYourInfoToBookTheRoomPage {
     @FindBy(xpath = ".//button[@name=\"book\"]")
     private WebElement submitFormButton;
 
-    @FindBy(xpath = ".//div[@class='bui-modal__inner']")
-    private WebElement popUpSomePeopleLookedForThisPlace;
-
-    @FindBy(xpath = ".//button[@class='bui-modal__close']")
-    private WebElement closePopUpButton;
-
     @FindBy(xpath = ".//div[@class='required_fields_description bui-spacer--large']")
     private WebElement succesfulBanner;
 
@@ -42,17 +36,12 @@ public class EnterYourInfoToBookTheRoomPage {
         this.driver = driver;
     }
 
-    public void fillTheBookForm() {
-        firstNameInput.sendKeys("Firstname");
-        lastNameInput.sendKeys("Lastname");
-        emailInput.sendKeys("testemail@gmail.com");
-        confirmEmailInput.sendKeys("testemail@gmail.com");
+    public FinalStepPage fillTheBookForm(String firstName, String lastName, String  email) {
+        firstNameInput.sendKeys(firstName);
+        lastNameInput.sendKeys(lastName);
+        emailInput.sendKeys(email);
+        confirmEmailInput.sendKeys(email);
         submitFormButton.submit();
-    }
-
-    public void handlePopUpWindowOtherPeopleIsLookingForThisPlace() {
-        if (popUpSomePeopleLookedForThisPlace.isDisplayed()) {
-            closePopUpButton.click();
-        }
+        return new FinalStepPage(driver);
     }
 }
