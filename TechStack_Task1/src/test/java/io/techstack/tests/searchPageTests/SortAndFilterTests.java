@@ -7,9 +7,7 @@ import io.techstack.pages.SearchResultPage;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 import static org.junit.Assert.assertTrue;
 
@@ -27,9 +25,8 @@ public class SortAndFilterTests {
 
     @Test
     public void sortByLowerPriceTest() {
-        WebElement fromLowestPrice = driver.findElement(By.xpath("//*[@id=\"ajaxsrwrap\"]/div[2]/div/div/div[2]/ul/li[3]/a"));
-        fromLowestPrice.click();
-        assertTrue(fromLowestPrice.isEnabled());
+        searchResultPage.getSortFromLowestPrice().click();
+        assertTrue(searchResultPage.getSortFromLowestPrice().isEnabled());
     }
 
     @Test

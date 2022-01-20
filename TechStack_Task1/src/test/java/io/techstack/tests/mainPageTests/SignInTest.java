@@ -36,11 +36,12 @@ public class SignInTest {
         signInPage = new SignInPage(driver);
         signInPage.enterEmail(TestResources.getProperty("email"));
         signInPage.getContinueWithEmailButton().click();
-        assertTrue(accountSignInPage.getLinkSentUnit().isSelected() || accountSignInPage.getSendPassword().isDisplayed());
+        assertTrue(accountSignInPage.getSendPassword().isDisplayed());
     }
 
     @Test
-    public void destinationBetweenButtonShouldBeEquals() {
+    public void destinationBetweenButtonShouldBeEquals()  {
+        mainpage.changeLanguage("English");
         WebElement signInButton = mainpage.getSignInButton();
         WebElement listYourPropertyButton = mainpage.getListYourProperty();
         WebElement registerButton = mainpage.getRegisterButton();

@@ -27,10 +27,8 @@ public class ChangingSearchParamTest {
     @Test
     public void changingSearchParam() {
         driver.get(TestResources.getProperty("searchResultPage"));
-        WaitUtils.waitForElementToBeVisible(driver, searchResultPage.getTitleWithCityName());
         driver.get(TestResources.getProperty("afterChangingParamPage"));
         searchResultPage = new SearchResultPage(driver);
-
         String cityName = "Kyiv";
         searchResultPage.changeParam(cityName);
         Assert.assertTrue(searchResultPage.getTitleWithCityName().getText().contains(cityName));

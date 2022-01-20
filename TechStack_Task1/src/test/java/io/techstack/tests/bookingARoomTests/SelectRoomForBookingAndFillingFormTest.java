@@ -30,9 +30,8 @@ public class SelectRoomForBookingAndFillingFormTest {
         driver.get(TestResources.getProperty("hotelPage"));
         hotelPage = new HotelPage(driver);
         enterYourInfoToBookTheRoomPage = hotelPage.handleDropDownListAndSubmitReserve();
-        assertTrue(enterYourInfoToBookTheRoomPage.getSuccesfulBanner().isDisplayed());
         finalStepPage = enterYourInfoToBookTheRoomPage.fillTheBookForm("Firstname", "Lastname", "testegmail@gmail.com");
-        assertTrue(finalStepPage.confirmUserFillBookForm());
+        assertTrue(finalStepPage.getSuccessfulBanner().isDisplayed());
     }
 
     @AfterClass

@@ -10,13 +10,13 @@ import org.openqa.selenium.support.PageFactory;
 @Getter
 public class MainPage {
 
-    @FindBy(xpath = ".//a[@class='bui-button bui-button--secondary js-header-login-link']")
+    @FindBy(xpath = "//div[contains(@class, 'bui-button-group')]//span[contains(text(),'Sign in')]")
     private WebElement signInButton;
 
-    @FindBy(xpath = ".//a[contains(@class,'bui-button bui-button--light bui-tr')]")
+    @FindBy(xpath = ".//span[contains(text(),'Register')]")
     private WebElement registerButton;
 
-    @FindBy(xpath = ".//a[@class='bui-button bui-button--light bui-traveller-header__product-action']")
+    @FindBy(xpath = ".//span[contains(text(),'List your property')]")
     private WebElement ListYourProperty;
 
     @FindBy(xpath = ".//button[@data-modal-id='language-selection']")
@@ -40,16 +40,8 @@ public class MainPage {
     @FindBy(xpath = ".//input[@type='search']")
     private WebElement cityInput;
 
-    @FindBy(xpath = ".//span[contains(@class,'sb-date-field__icon sb-date')]")
+    @FindBy(xpath = ".//span[contains(@class,'icon sb-date')]")
     private WebElement checkInButton;
-/*
-    @FindBy(xpath = ".//td[@data-date='2022-01-29']")
-    private WebElement dateCheckIn;
-
-    @FindBy(xpath = ".//td[@data-date='2022-01-30']")
-    private WebElement dateCheckOut;
-
- */
 
     @FindBy(xpath = ".//button[@data-modal-header-async-type='currencyDesktop']")
     private WebElement changeCurrencyButton;

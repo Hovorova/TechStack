@@ -9,10 +9,10 @@ import org.openqa.selenium.support.PageFactory;
 
 @Getter
 public class SearchResultPage {
-    @FindBy(xpath = ".//span[@class='_a48a3fc0e']")
+    @FindBy(xpath = ".//label[@data-on-value='Set your own budget']")
     private WebElement setYourOwnBudgetButton;
 
-    @FindBy(xpath = ".//span[@class='_af5d9ea85'][1]")
+    @FindBy(xpath = ".//div[@data-testid='filters-group-slider']")
     private WebElement selectedBudgetInfo;
 
     @FindBy(xpath = "//div[@data-testid='filters-group-slider']//div[@role='none'][1]")
@@ -30,8 +30,17 @@ public class SearchResultPage {
     @FindBy(xpath = ".//button[@data-testid='wishlist-button']")
     private WebElement addToFavouriteIcon;
 
-    @FindBy(xpath = ".//h1[@class='_30227359d _0db903e42']")
+    @FindBy(xpath = ".//div[@data-testid='wishlist-popover-content']")
+    private WebElement succesfullyAddedToFavoritesBanner;
+
+    @FindBy(xpath = ".//div[@data-component='arp-header']")
     private WebElement titleWithCityName;
+
+    @FindBy(xpath = ".//form[contains(@data-component,'searchbox')]")
+    private WebElement sideBar;
+
+    @FindBy(xpath = ".//li[@data-id='price']")
+    private WebElement sortFromLowestPrice;
 
     private WebDriver driver;
 
@@ -40,10 +49,11 @@ public class SearchResultPage {
         this.driver = driver;
     }
 
-    public void changeParam(String cityName) {
+    public SearchResultPage changeParam(String cityName) {
         cityNameField.clear();
         cityNameField.sendKeys(cityName);
         submitChangesButton.click();
+        return new SearchResultPage(driver);
     }
 
     public void setBudget() {

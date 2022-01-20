@@ -8,8 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 
 @Getter
 public class EnterYourInfoToBookTheRoomPage {
-    @FindBy(xpath = ".//section[contains(@class,'bui-card bp-card--unit')]")
-    private WebElement bookForm;
 
     @FindBy(xpath = ".//input[@name='firstname']")
     private WebElement firstNameInput;
@@ -25,9 +23,6 @@ public class EnterYourInfoToBookTheRoomPage {
 
     @FindBy(xpath = ".//button[@name='book']")
     private WebElement submitFormButton;
-
-    @FindBy(xpath = ".//div[@class='required_fields_description bui-spacer--large']")
-    private WebElement succesfulBanner;
 
     private WebDriver driver;
 
