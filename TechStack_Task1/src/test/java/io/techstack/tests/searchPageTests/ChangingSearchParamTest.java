@@ -2,6 +2,7 @@ package io.techstack.tests.searchPageTests;
 
 import io.techstack.beforeActionAndTestResources.DriverHelper;
 import io.techstack.beforeActionAndTestResources.TestResources;
+import io.techstack.beforeActionAndTestResources.WaitUtils;
 import io.techstack.pages.SearchResultPage;
 import org.junit.AfterClass;
 import org.junit.Assert;

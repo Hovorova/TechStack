@@ -2,13 +2,12 @@ package io.techstack.tests.searchPageTests;
 
 import io.techstack.beforeActionAndTestResources.DriverHelper;
 import io.techstack.beforeActionAndTestResources.TestResources;
+import io.techstack.beforeActionAndTestResources.WaitUtils;
 import io.techstack.pages.SearchResultPage;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 import static org.junit.Assert.assertTrue;
 

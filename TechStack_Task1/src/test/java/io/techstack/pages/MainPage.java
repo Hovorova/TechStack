@@ -1,8 +1,8 @@
 package io.techstack.pages;
 
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -26,10 +26,9 @@ public class MainPage extends BasePage {
         this.driver = driver;
     }
 
-    public boolean isDistanceBetweenButtonsEqual(WebElement firstButton, WebElement secondButton, WebElement thirdButton) {
-        int dimensionForSecondSpace = thirdButton.getLocation().getX() - secondButton.getLocation().getX() - secondButton.getSize().getWidth();
-        int dimensionForFirstSpace = secondButton.getLocation().getX() - firstButton.getLocation().getX() - firstButton.getSize().getWidth();
-        return dimensionForFirstSpace == dimensionForSecondSpace;
+    public SearchResultPage confirmSearch() {
+        searchButton.click();
+        return new SearchResultPage(driver);
     }
 
     public void searchInput(String cityName) {
@@ -44,8 +43,8 @@ public class MainPage extends BasePage {
         return tagIsInput & attributeWhereAreYouGoingCity;
     }
 
-    public String createXpathForCheckInAndCheckOutDate(String checkInDate) {
-        String finalStringCheckInDate = ".//td[@data-date='" + checkInDate + "']";
+    public String createXpathForCheckInAndCheckOutDate(String dateCheckInDate) {
+        String finalStringCheckInDate = ".//td[@data-date='" + dateCheckInDate + "']";
         return finalStringCheckInDate;
     }
 }
