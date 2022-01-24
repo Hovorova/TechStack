@@ -2,13 +2,13 @@ package io.techstack.tests.mainPageTests;
 
 import io.techstack.beforeActionAndTestResources.DriverHelper;
 import io.techstack.beforeActionAndTestResources.TestResources;
+import io.techstack.beforeActionAndTestResources.WaitUtils;
 import io.techstack.pages.AccountSignInPage;
 import io.techstack.pages.MainPage;
 import io.techstack.pages.SignInPage;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -25,6 +25,7 @@ public class SignInTest {
         driver = DriverHelper.getDriver();
         driver.get(TestResources.getProperty("mainPage"));
         mainpage = new MainPage(driver);
+        WaitUtils.implicitWait(driver);
     }
 
     @Test
@@ -34,15 +35,16 @@ public class SignInTest {
         accountSignInPage = new AccountSignInPage(driver);
         signInPage = new SignInPage(driver);
         signInPage.enterEmail(TestResources.getProperty("email"));
-        signInPage.signIn();
-        assertTrue(accountSignInPage.confirmSignIn());
+        signInPage.getContinueWithEmailButton().click();
+        assertTrue(accountSignInPage.getSendPassword().isDisplayed());
     }
 
     @Test
-    public void destinationBetweenButtonShouldBeEquals() {
-        WebElement signInButton = driver.findElement(By.cssSelector("#b2indexPage > header > nav.bui-header__bar > div.bui-group.bui-button-group.bui-group--inline.bui-group--align-end.bui-group--vertical-align-middle > div:nth-child(6) > a"));
-        WebElement listYourPropertyButton = driver.findElement(By.xpath(".//a[@class='bui-button bui-button--light bui-traveller-header__product-action']"));
-        WebElement registerButton = driver.findElement(By.cssSelector("#b2indexPage > header > nav.bui-header__bar > div.bui-group.bui-button-group.bui-group--inline.bui-group--align-end.bui-group--vertical-align-middle > div:nth-child(5) > a"));
+    public void destinationBetweenButtonShouldBeEquals()  {
+        mainpage.changeLanguage("English");
+        WebElement signInButton = mainpage.getSignInButton();
+        WebElement listYourPropertyButton = mainpage.getListYourProperty();
+        WebElement registerButton = mainpage.getRegisterButton();
         if (signInButton.getCssValue("background-color").equals("rgba(255, 255, 255, 1)")) {
             assertTrue(mainpage.isDistanceBetweenButtonsEqual(signInButton, listYourPropertyButton, registerButton));
         }

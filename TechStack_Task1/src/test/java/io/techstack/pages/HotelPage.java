@@ -1,5 +1,6 @@
 package io.techstack.pages;
 
+import lombok.Getter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -9,11 +10,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+@Getter
 public class HotelPage {
-    @FindBy(xpath = "//*[@id=\"hprt_nos_select_803467301_341664530_3_0_0\"]")
+    @FindBy(xpath = ".//select[contains(@name,'nr_rooms')]")
     private WebElement selectRoomDropDown;
-    @FindBy(xpath = "//*[@id=\"hprt_nos_select_803467301_341664530_3_0_0\"]/option[2]")
-    private WebElement selectOption;
+
+    @FindBy(xpath = ".//div[contains(@class,'reservation-c')]")
+    private WebElement illReserveButton;
 
     private WebDriver driver;
 
@@ -22,12 +25,13 @@ public class HotelPage {
         this.driver = driver;
     }
 
-    public void handleDropDownListAndSubmitReserve() {
+    public EnterYourInfoToBookTheRoomPage handleDropDownListAndSubmitReserve() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView();", selectRoomDropDown);
         Select objSelect = new Select(selectRoomDropDown);
         objSelect.selectByValue("1");
         Actions action = new Actions(driver);
         action.click(driver.findElement(By.cssSelector("span[class='bui-button__text js-reservation-button__text']"))).build().perform();
+        return new EnterYourInfoToBookTheRoomPage(driver);
     }
 }

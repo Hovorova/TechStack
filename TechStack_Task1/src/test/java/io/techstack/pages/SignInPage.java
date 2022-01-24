@@ -1,14 +1,17 @@
 package io.techstack.pages;
 
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+@Getter
 public class SignInPage {
-    @FindBy(xpath = "//*[@id=\"username\"]")
+    @FindBy(xpath = ".//input[@type='email']")
     private WebElement email;
-    @FindBy(xpath = "/html/body/div/div/div/div[2]/div[1]/div/div/div/div/div/div/form/div[3]/button")
+
+    @FindBy(xpath = ".//button[@type='submit']")
     private WebElement continueWithEmailButton;
 
     private WebDriver driver;
@@ -18,11 +21,9 @@ public class SignInPage {
         this.driver = driver;
     }
 
-    public void enterEmail(String input) {
+    public AccountSignInPage enterEmail(String input) {
         email.sendKeys(input);
-    }
-
-    public void signIn() {
         continueWithEmailButton.click();
+        return new AccountSignInPage(driver);
     }
 }
