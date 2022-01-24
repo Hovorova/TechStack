@@ -24,7 +24,6 @@ public class AddToFavoriteTest {
     public void addToFavTest() {
         driver.get(TestResources.getProperty("searchResultPage"));
         searchResultPage = new SearchResultPage(driver);
-        WaitUtils.fluentWaitElementToBeVisible(driver, searchResultPage.getAddToFavouriteIcon());
         searchResultPage.getAddToFavouriteIcon().click();
         WaitUtils.fluentWaitElementToBeVisible(driver, searchResultPage.getSuccesfullyAddedToFavoritesBanner());
         Assert.assertTrue(searchResultPage.getSuccesfullyAddedToFavoritesBanner().isDisplayed());
