@@ -1,15 +1,5 @@
 package io.techstack.beforeActionAndTestResources;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
-import java.util.ArrayList;
-
 public class WaitUtils {
     public static void fluentWaitElementToBeVisible(WebDriver driver, WebElement element) {
         Wait<WebDriver> wait = new FluentWait<>(driver)

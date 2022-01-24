@@ -2,12 +2,12 @@ package io.techstack.tests.searchPageTests;
 
 import io.techstack.beforeActionAndTestResources.DriverHelper;
 import io.techstack.beforeActionAndTestResources.TestResources;
-import io.techstack.beforeActionAndTestResources.WaitUtils;
 import io.techstack.pages.SearchResultPage;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class AddToFavoriteTest {
@@ -23,9 +23,8 @@ public class AddToFavoriteTest {
     public void addToFavTest() {
         driver.get(TestResources.getProperty("searchResultPage"));
         searchResultPage = new SearchResultPage(driver);
-        searchResultPage.getAddToFavouriteIcon().click();
-        WaitUtils.fluentWaitElementToBeVisible(driver, searchResultPage.getSuccesfullyAddedToFavoritesBanner());
-        Assert.assertTrue(searchResultPage.getSuccesfullyAddedToFavoritesBanner().isDisplayed());
+        searchResultPage.addToFavorites();
+        Assert.assertTrue(driver.findElement(By.linkText("My next trip")).isDisplayed());
     }
 
     @AfterClass

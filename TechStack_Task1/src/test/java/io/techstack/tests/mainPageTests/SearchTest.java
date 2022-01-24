@@ -2,16 +2,18 @@ package io.techstack.tests.mainPageTests;
 
 import io.techstack.beforeActionAndTestResources.DriverHelper;
 import io.techstack.beforeActionAndTestResources.TestResources;
-import io.techstack.beforeActionAndTestResources.WaitUtils;
 import io.techstack.pages.MainPage;
 import io.techstack.pages.SearchResultPage;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 public class SearchTest {
     private static MainPage mainPage;
@@ -28,7 +30,6 @@ public class SearchTest {
 
     @Test
     public void searchTest() {
-        mainPage.changeLanguage("English");
         if (mainPage.elementInputCityTagnameAndAttribute()) {
             mainPage.searchInput("Kharkiv");
             driver.findElement(By.xpath(mainPage.createXpathForCheckInAndCheckOutDate("2022-01-28"))).click();
