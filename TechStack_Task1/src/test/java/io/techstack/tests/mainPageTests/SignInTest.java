@@ -6,6 +6,7 @@ import io.techstack.beforeActionAndTestResources.WaitUtils;
 import io.techstack.pages.AccountSignInPage;
 import io.techstack.pages.MainPage;
 import io.techstack.pages.SignInPage;
+import io.techstack.steps.MainSteps;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -20,26 +21,27 @@ public class SignInTest {
     private static SignInPage signInPage;
     private static AccountSignInPage accountSignInPage;
     private static MainPage mainpage;
+    private static MainSteps mainSteps;
     private static WebDriver driver;
 
     @BeforeClass
     public static void setup() {
         driver = DriverHelper.getDriver();
+        mainSteps = new MainSteps(driver);
         driver.get(TestResources.getProperty("mainPage"));
         mainpage = new MainPage(driver);
     }
 
     @Test
-    public void signInTest() {
-        signInPage = mainpage.signIn();
-        accountSignInPage = signInPage.enterEmail(TestResources.getProperty("email"));
-        WaitUtils.waitForElementToBeVisible(driver, accountSignInPage.getPasswordInput());
-        mainpage = accountSignInPage.enterPassword(TestResources.getProperty("password"));
-        assertTrue(accountSignInPage.getSendPassword().isDisplayed() || mainpage.IsUserSignedIn("Firstname Lastname"));
+    public void newSignInTest() {
+        MainSteps.givenUserSignInWithTheCreatedAccount();
+        MainSteps.thenUserNameIsDisplayedInTheTopOfThePage();
     }
 
     @Test
-    public void destinationBetweenButtonShouldBeEquals()  {
+    public void destinationBetweenButtonShouldBeEquals() {
+        driver.get(TestResources.getProperty("mainPage"));
+        mainpage = new MainPage(driver);
         ArrayList<WebElement> mainMenuButtons = new ArrayList<WebElement>();
         WebElement signInButton = mainpage.getSignInButton();
         WebElement listYourPropertyButton = mainpage.getListYourProperty();

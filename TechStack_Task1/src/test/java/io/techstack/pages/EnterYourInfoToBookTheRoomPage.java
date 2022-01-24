@@ -1,5 +1,6 @@
 package io.techstack.pages;
 
+import io.techstack.valueObjects.User;
 import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,11 +32,11 @@ public class EnterYourInfoToBookTheRoomPage {
         this.driver = driver;
     }
 
-    public FinalStepPage fillTheBookForm(String firstName, String lastName, String email) {
-        firstNameInput.sendKeys(firstName);
-        lastNameInput.sendKeys(lastName);
-        emailInput.sendKeys(email);
-        confirmEmailInput.sendKeys(email);
+    public FinalStepPage fillTheBookForm(User user) {
+        firstNameInput.sendKeys(user.getFirstName());
+        lastNameInput.sendKeys(user.getLastName());
+        emailInput.sendKeys(user.getEmail());
+        confirmEmailInput.sendKeys(user.getEmail());
         submitFormButton.submit();
         return new FinalStepPage(driver);
     }
