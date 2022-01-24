@@ -8,26 +8,21 @@ import org.openqa.selenium.support.PageFactory;
 
 @Getter
 public class EnterYourInfoToBookTheRoomPage {
-    @FindBy(xpath = "//*[@id=\"bookForm\"]/div[1]")
-    private WebElement bookForm;
 
-    @FindBy(xpath = "//*[@id=\"firstname\"]")
+    @FindBy(xpath = ".//input[@name='firstname']")
     private WebElement firstNameInput;
 
-    @FindBy(xpath = "//*[@id=\"lastname\"]")
+    @FindBy(xpath = ".//input[@name='lastname']")
     private WebElement lastNameInput;
 
-    @FindBy(xpath = "//*[@id=\"email\"]")
+    @FindBy(xpath = ".//input[@name='email']")
     private WebElement emailInput;
 
-    @FindBy(xpath = "//*[@id=\"email_confirm\"]")
+    @FindBy(xpath = ".//input[@name='email_confirm']")
     private WebElement confirmEmailInput;
 
-    @FindBy(xpath = ".//button[@type='submit']")
+    @FindBy(xpath = ".//button[@name='book']")
     private WebElement submitFormButton;
-
-    @FindBy(xpath = "//div[@class='bp-personal-details-form']")
-    private WebElement enterYourDetailsForm;
 
     private WebDriver driver;
 
@@ -36,15 +31,12 @@ public class EnterYourInfoToBookTheRoomPage {
         this.driver = driver;
     }
 
-    public boolean confirmUserHasSelectedTheRoom() {
-        return bookForm.isDisplayed();
-    }
-
-    public void fillTheBookForm() {
-        firstNameInput.sendKeys("Firstname");
-        lastNameInput.sendKeys("Lastname");
-        emailInput.sendKeys("testemail@gmail.com");
-        confirmEmailInput.sendKeys("testemail@gmail.com");
+    public FinalStepPage fillTheBookForm(String firstName, String lastName, String email) {
+        firstNameInput.sendKeys(firstName);
+        lastNameInput.sendKeys(lastName);
+        emailInput.sendKeys(email);
+        confirmEmailInput.sendKeys(email);
         submitFormButton.submit();
+        return new FinalStepPage(driver);
     }
 }

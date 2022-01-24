@@ -8,8 +8,8 @@ import io.techstack.pages.SearchResultPage;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 import static org.junit.Assert.assertTrue;
 
@@ -28,17 +28,14 @@ public class SearchTest {
 
     @Test
     public void searchTest() {
-        searchResultPage = new SearchResultPage(driver);
         mainPage.changeLanguage("English");
-        String cityName = "Kharkiv";
-        mainPage.search(cityName);
-        assertTrue(searchResultPage.getTitleWithCityName().getText().contains(cityName));
-    }
-
-    @Test
-    public void tagnameAndAttributeTest() {
-        WebElement cityInput = mainPage.getCityInput();
-        assertTrue(mainPage.elementTagnameIsInputAndAttributeIsSearch(cityInput));
+        if (mainPage.elementInputCityTagnameAndAttribute()) {
+            mainPage.searchInput("Kharkiv");
+            driver.findElement(By.xpath(mainPage.createXpathForCheckInAndCheckOutDate("2022-01-28"))).click();
+            driver.findElement(By.xpath(mainPage.createXpathForCheckInAndCheckOutDate("2022-01-30"))).click();
+            searchResultPage = mainPage.confirmSearch();
+            assertTrue(searchResultPage.getTitleWithCityName().getText().contains("Kharkiv"));
+        }
     }
 
     @AfterClass

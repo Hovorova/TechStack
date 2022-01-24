@@ -8,9 +8,7 @@ import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class AddToFavoriteTest {
     private static SearchResultPage searchResultPage;
@@ -25,12 +23,9 @@ public class AddToFavoriteTest {
     public void addToFavTest() {
         driver.get(TestResources.getProperty("searchResultPage"));
         searchResultPage = new SearchResultPage(driver);
-        WebElement addToFavoriteButton = searchResultPage.getAddToFavouriteButton();
-        WaitUtils.fluentWaitElementToBeVisible(driver, addToFavoriteButton);
-        addToFavoriteButton.click();
-        WebElement savedToFavoriteMessage = searchResultPage.getSuccesfullyAddedToFavoritesBanner();
-        WaitUtils.fluentWaitElementToBeVisible(driver, savedToFavoriteMessage);
-        Assert.assertTrue(savedToFavoriteMessage.isDisplayed());
+        searchResultPage.getAddToFavouriteIcon().click();
+        WaitUtils.fluentWaitElementToBeVisible(driver, searchResultPage.getSuccesfullyAddedToFavoritesBanner());
+        Assert.assertTrue(searchResultPage.getSuccesfullyAddedToFavoritesBanner().isDisplayed());
     }
 
     @AfterClass

@@ -9,7 +9,6 @@ import io.techstack.pages.SignInPage;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -32,23 +31,15 @@ public class SignInTest {
 
     @Test
     public void signInTest() {
-        driver.get(TestResources.getProperty("signInPage"));
-        driver.get(TestResources.getProperty("accountSignInPage"));
-        accountSignInPage = new AccountSignInPage(driver);
-        signInPage = new SignInPage(driver);
-        signInPage.enterEmail(TestResources.getProperty("email"));
-        if (driver.getCurrentUrl() == TestResources.getProperty("signInEnterPassword")) {
-            driver.findElement(By.xpath(".//input[@name='new_password']")).sendKeys("testPassword123");
-            driver.findElement(By.xpath(".//input[@name='confirmed_password']")).sendKeys("testPassword123");
-            assertTrue(driver.findElement(By.xpath(".//div[@class='bui-avatar-block']")).isDisplayed());
-        } else {
-            signInPage.signIn();
-            assertTrue(accountSignInPage.confirmSignIn());
-        }
+        signInPage = mainpage.signIn();
+        accountSignInPage = signInPage.enterEmail(TestResources.getProperty("email"));
+        WaitUtils.waitForElementToBeVisible(driver, accountSignInPage.getPasswordInput());
+        mainpage = accountSignInPage.enterPassword(TestResources.getProperty("password"));
+        assertTrue(accountSignInPage.getSendPassword().isDisplayed() || mainpage.IsUserSignedIn("Firstname Lastname"));
     }
 
     @Test
-    public void destinationBetweenButtonShouldBeEquals() {
+    public void destinationBetweenButtonShouldBeEquals()  {
         ArrayList<WebElement> mainMenuButtons = new ArrayList<WebElement>();
         WebElement signInButton = mainpage.getSignInButton();
         WebElement listYourPropertyButton = mainpage.getListYourProperty();
@@ -56,7 +47,7 @@ public class SignInTest {
         mainMenuButtons.add(signInButton);
         mainMenuButtons.add(listYourPropertyButton);
         mainMenuButtons.add(registerButton);
-        WaitUtils.waitForAllElementsToBeVisible(driver, mainMenuButtons);
+        WaitUtils.waitForElementsToBeVisible(driver, mainMenuButtons);
         if (signInButton.getCssValue("background-color").equals("rgba(255, 255, 255, 1)")) {
             assertTrue(mainpage.isDistanceBetweenButtonsEqual(signInButton, listYourPropertyButton, registerButton));
         }

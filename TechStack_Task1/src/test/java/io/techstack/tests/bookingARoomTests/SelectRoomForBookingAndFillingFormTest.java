@@ -29,19 +29,9 @@ public class SelectRoomForBookingAndFillingFormTest {
         driver.get(TestResources.getProperty("hotelPage"));
         hotelPage = new HotelPage(driver);
         WaitUtils.waitForElementToBeClickable(driver, hotelPage.getHotelGallery());
-        enterYourInfoToBookTheRoomPage = new EnterYourInfoToBookTheRoomPage(driver);
-        hotelPage.handleDropDownListAndSubmitReserve();
-        assertTrue(enterYourInfoToBookTheRoomPage.confirmUserHasSelectedTheRoom());
-    }
-
-    @Test
-    public void fillingBookingFormTest() {
-        driver.get(TestResources.getProperty("bookFormPage"));
-        enterYourInfoToBookTheRoomPage = new EnterYourInfoToBookTheRoomPage(driver);
-        WaitUtils.waitForElementToBeClickable(driver, enterYourInfoToBookTheRoomPage.getEnterYourDetailsForm());
-        finalStepPage = new FinalStepPage(driver);
-        enterYourInfoToBookTheRoomPage.fillTheBookForm();
-        assertTrue(finalStepPage.confirmUserFillBookForm());
+        enterYourInfoToBookTheRoomPage = hotelPage.handleDropDownListAndSubmitReserve();
+        finalStepPage = enterYourInfoToBookTheRoomPage.fillTheBookForm("Firstname", "Lastname", "testegmail@gmail.com");
+        assertTrue(finalStepPage.getSuccessfulBanner().isDisplayed());
     }
 
     @AfterClass
