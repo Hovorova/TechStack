@@ -13,9 +13,6 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
 public class SelectRoomForBookingAndFillingFormTest {
-    private static HotelPage hotelPage;
-    private static EnterYourInfoToBookTheRoomPage enterYourInfoToBookTheRoomPage;
-    private static FinalStepPage finalStepPage;
     private static HotelSteps hotelSteps;
     private static WebDriver driver;
 

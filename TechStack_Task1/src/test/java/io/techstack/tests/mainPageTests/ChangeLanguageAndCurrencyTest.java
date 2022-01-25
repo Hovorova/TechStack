@@ -3,15 +3,15 @@ package io.techstack.tests.mainPageTests;
 import io.techstack.beforeActionAndTestResources.DriverHelper;
 import io.techstack.beforeActionAndTestResources.TestResources;
 import io.techstack.pages.MainPage;
+import io.techstack.steps.MainSteps;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
-import static org.junit.Assert.assertEquals;
-
 public class ChangeLanguageAndCurrencyTest {
     private static MainPage mainPage;
+    private static MainSteps mainSteps;
     private static WebDriver driver;
 
     @BeforeClass
@@ -19,19 +19,21 @@ public class ChangeLanguageAndCurrencyTest {
         driver = DriverHelper.getDriver();
         driver.get(TestResources.getProperty("mainPage"));
         mainPage = new MainPage(driver);
+        mainSteps = new MainSteps(driver);
     }
 
     @Test
     public void changeLanguageTest() {
-        mainPage.changeLanguage("Polski");
-        assertEquals(TestResources.getProperty("polski"), mainPage.getSearchButton().getText());
+        String language = "Polski";
+        MainSteps.givenUserChangesLanguage(language);
+        MainSteps.thenUserHasChangedLanguage(language);
 
     }
 
     @Test
     public void changeCurrencyTest() {
-        mainPage.changeCurrency("Dollar");
-        assertEquals("USD\n" + "Choose your currency. Your current currency is U.S. dollar", mainPage.getChangeCurrencyButton().getText());
+        MainSteps.givenUserChangesCurrency("Dollar");
+        MainSteps.thenUserHasChangedCurrency();
     }
 
     @AfterClass
