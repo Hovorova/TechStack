@@ -18,6 +18,9 @@ public class HotelPage {
     @FindBy(xpath = ".//div[contains(@class,'reservation-c')]")
     private WebElement illReserveButton;
 
+    @FindBy(xpath = ".//div[contains(@class, 'gallery-header')]")
+    private WebElement hotelGallery;
+
     private WebDriver driver;
 
     public HotelPage(WebDriver driver) {

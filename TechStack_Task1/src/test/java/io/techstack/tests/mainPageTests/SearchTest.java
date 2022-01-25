@@ -23,12 +23,11 @@ public class SearchTest {
         driver = DriverHelper.getDriver();
         driver.get(TestResources.getProperty("mainPage"));
         mainPage = new MainPage(driver);
-        WaitUtils.implicitWait(driver);
+        WaitUtils.waitForElementToBeVisible(driver, mainPage.getMainMenu());
     }
 
     @Test
     public void searchTest() {
-        mainPage.changeLanguage("English");
         if (mainPage.elementInputCityTagnameAndAttribute()) {
             mainPage.searchInput("Kharkiv");
             driver.findElement(By.xpath(mainPage.createXpathForCheckInAndCheckOutDate("2022-01-28"))).click();

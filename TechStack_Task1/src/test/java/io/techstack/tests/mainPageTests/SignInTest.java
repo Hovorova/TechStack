@@ -12,6 +12,8 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertTrue;
 
 public class SignInTest {
@@ -25,26 +27,27 @@ public class SignInTest {
         driver = DriverHelper.getDriver();
         driver.get(TestResources.getProperty("mainPage"));
         mainpage = new MainPage(driver);
-        WaitUtils.implicitWait(driver);
     }
 
     @Test
     public void signInTest() {
-        driver.get(TestResources.getProperty("signInPage"));
-        driver.get(TestResources.getProperty("accountSignInPage"));
-        accountSignInPage = new AccountSignInPage(driver);
-        signInPage = new SignInPage(driver);
-        signInPage.enterEmail(TestResources.getProperty("email"));
-        signInPage.getContinueWithEmailButton().click();
-        assertTrue(accountSignInPage.getSendPassword().isDisplayed());
+        signInPage = mainpage.signIn();
+        accountSignInPage = signInPage.enterEmail(TestResources.getProperty("email"));
+        WaitUtils.waitForElementToBeVisible(driver, accountSignInPage.getPasswordInput());
+        mainpage = accountSignInPage.enterPassword(TestResources.getProperty("password"));
+        assertTrue(accountSignInPage.getSendPassword().isDisplayed() || mainpage.IsUserSignedIn("Firstname Lastname"));
     }
 
     @Test
     public void destinationBetweenButtonShouldBeEquals()  {
-        mainpage.changeLanguage("English");
+        ArrayList<WebElement> mainMenuButtons = new ArrayList<WebElement>();
         WebElement signInButton = mainpage.getSignInButton();
         WebElement listYourPropertyButton = mainpage.getListYourProperty();
         WebElement registerButton = mainpage.getRegisterButton();
+        mainMenuButtons.add(signInButton);
+        mainMenuButtons.add(listYourPropertyButton);
+        mainMenuButtons.add(registerButton);
+        WaitUtils.waitForElementsToBeVisible(driver, mainMenuButtons);
         if (signInButton.getCssValue("background-color").equals("rgba(255, 255, 255, 1)")) {
             assertTrue(mainpage.isDistanceBetweenButtonsEqual(signInButton, listYourPropertyButton, registerButton));
         }

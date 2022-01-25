@@ -2,7 +2,6 @@ package io.techstack.tests.mainPageTests;
 
 import io.techstack.beforeActionAndTestResources.DriverHelper;
 import io.techstack.beforeActionAndTestResources.TestResources;
-import io.techstack.beforeActionAndTestResources.WaitUtils;
 import io.techstack.pages.MainPage;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -20,22 +19,19 @@ public class ChangeLanguageAndCurrencyTest {
         driver = DriverHelper.getDriver();
         driver.get(TestResources.getProperty("mainPage"));
         mainPage = new MainPage(driver);
-        WaitUtils.implicitWait(driver);
     }
 
     @Test
     public void changeLanguageTest() {
         mainPage.changeLanguage("Polski");
-        String currentLanguage = mainPage.getSearchButton().getText();
-        assertEquals(TestResources.getProperty("polski"), currentLanguage);
+        assertEquals(TestResources.getProperty("polski"), mainPage.getSearchButton().getText());
 
     }
 
     @Test
     public void changeCurrencyTest() {
         mainPage.changeCurrency("Dollar");
-        String currentCurrency = mainPage.getChangeCurrencyButton().getText();
-        assertEquals("USD\n" + "Выберите валюту. Текущая валюта — Доллар США", currentCurrency);
+        assertEquals("USD\n" + "Choose your currency. Your current currency is U.S. dollar", mainPage.getChangeCurrencyButton().getText());
     }
 
     @AfterClass

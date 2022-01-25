@@ -22,13 +22,13 @@ public class SelectRoomForBookingAndFillingFormTest {
     @BeforeClass
     public static void setup() {
         driver = DriverHelper.getDriver();
-        WaitUtils.implicitWait(driver);
     }
 
     @Test
     public void selectRoomTest() {
         driver.get(TestResources.getProperty("hotelPage"));
         hotelPage = new HotelPage(driver);
+        WaitUtils.waitForElementToBeClickable(driver, hotelPage.getHotelGallery());
         enterYourInfoToBookTheRoomPage = hotelPage.handleDropDownListAndSubmitReserve();
         finalStepPage = enterYourInfoToBookTheRoomPage.fillTheBookForm("Firstname", "Lastname", "testegmail@gmail.com");
         assertTrue(finalStepPage.getSuccessfulBanner().isDisplayed());

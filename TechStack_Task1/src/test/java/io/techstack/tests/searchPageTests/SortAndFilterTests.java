@@ -20,11 +20,11 @@ public class SortAndFilterTests {
         driver = DriverHelper.getDriver();
         driver.get(TestResources.getProperty("searchResultPage"));
         searchResultPage = new SearchResultPage(driver);
-        WaitUtils.implicitWait(driver);
     }
 
     @Test
     public void sortByLowerPriceTest() {
+        WaitUtils.waitForElementToBeClickable(driver, searchResultPage.getSortFromLowestPrice());
         searchResultPage.getSortFromLowestPrice().click();
         assertTrue(searchResultPage.getSortFromLowestPrice().isEnabled());
     }
