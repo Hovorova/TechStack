@@ -1,5 +1,7 @@
 package io.techstack.pages;
 
+import io.techstack.components.DriverWrapper;
+import io.techstack.components.buttons.Button;
 import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,8 +24,9 @@ public class SignInPage {
     }
 
     public AccountSignInPage enterEmail(String input) {
+        DriverWrapper wrapper = new DriverWrapper();
         email.sendKeys(input);
-        continueWithEmailButton.click();
+        wrapper.<Button>getComponent(driver, Button.class, "submit").click();
         return new AccountSignInPage(driver);
     }
 }
