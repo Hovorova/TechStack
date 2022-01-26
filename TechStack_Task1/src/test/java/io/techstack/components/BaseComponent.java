@@ -17,7 +17,9 @@ public abstract class BaseComponent {
         this.identifier = identifier;
     }
 
-    public void setParent(BaseComponent parent){
-        this.parent = parent;
+    public void build(BaseComponent parent){
+        if (parent != null){
+            this.parent = parent;
+        }
     }
 }

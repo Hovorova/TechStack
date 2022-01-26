@@ -17,7 +17,7 @@ public class DriverWrapper {
             throw new RuntimeException(e);
         }
         component.setIdentifier(identifier);
-        component.setParent(parent);
+        component.build(parent);
         component.instances.put(identifier, driver.findElement(component.construct()));
         return driver.findElement(component.construct());
     }
