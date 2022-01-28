@@ -2,17 +2,16 @@ package io.techstack.tests.searchPageTests;
 
 import io.techstack.beforeActionAndTestResources.DriverHelper;
 import io.techstack.beforeActionAndTestResources.TestResources;
-import io.techstack.beforeActionAndTestResources.WaitUtils;
 import io.techstack.pages.SearchResultPage;
+import io.techstack.steps.SearchPageSteps;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
-import static org.junit.Assert.assertTrue;
-
 public class SortAndFilterTests {
     private static SearchResultPage searchResultPage;
+    private static SearchPageSteps searchPageSteps;
     private static WebDriver driver;
 
     @BeforeClass
@@ -20,19 +19,19 @@ public class SortAndFilterTests {
         driver = DriverHelper.getDriver();
         driver.get(TestResources.getProperty("searchResultPage"));
         searchResultPage = new SearchResultPage(driver);
+        searchPageSteps = new SearchPageSteps(driver);
     }
 
     @Test
     public void sortByLowerPriceTest() {
-        WaitUtils.waitForElementToBeClickable(driver, searchResultPage.getSortFromLowestPrice());
-        searchResultPage.getSortFromLowestPrice().click();
-        assertTrue(searchResultPage.getSortFromLowestPrice().isEnabled());
+        SearchPageSteps.givenUserClickOnSortFromLowestPrice();
+        SearchPageSteps.thenButtonSortFromLowestPriceIsEnable();
     }
 
     @Test
     public void filterSetYourBudgetTest() {
-        searchResultPage.setBudget();
-        assertTrue(searchResultPage.getSelectedBudgetInfo().isDisplayed());
+        SearchPageSteps.givenUserUseFilterSetYourOwnBudget();
+        SearchPageSteps.thenBoundariesOfBudgetIsDispayed();
     }
 
     @AfterClass

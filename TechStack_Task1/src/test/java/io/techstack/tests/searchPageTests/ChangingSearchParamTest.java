@@ -1,33 +1,29 @@
 package io.techstack.tests.searchPageTests;
 
 import io.techstack.beforeActionAndTestResources.DriverHelper;
-import io.techstack.beforeActionAndTestResources.TestResources;
-import io.techstack.beforeActionAndTestResources.WaitUtils;
 import io.techstack.pages.SearchResultPage;
+import io.techstack.steps.SearchPageSteps;
 import org.junit.AfterClass;
-import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
 public class ChangingSearchParamTest {
     private static SearchResultPage searchResultPage;
+    private static SearchPageSteps searchPageSteps;
     private static WebDriver driver;
 
     @BeforeClass
     public static void setup() {
         driver = DriverHelper.getDriver();
+        searchResultPage = new SearchResultPage(driver);
+        searchPageSteps = new SearchPageSteps(driver);
     }
 
     @Test
     public void changingSearchParam() {
-        driver.get(TestResources.getProperty("searchResultPage"));
-        driver.get(TestResources.getProperty("afterChangingParamPage"));
-        searchResultPage = new SearchResultPage(driver);
-        WaitUtils.waitForElementToBeVisible(driver, searchResultPage.getSideBar());
         String cityName = "Kyiv";
-        searchResultPage.changeParam(cityName);
-        Assert.assertTrue(searchResultPage.getTitleWithCityName().getText().contains(cityName));
+        SearchPageSteps.changingSearchParamOnSearchResultPage(cityName);
     }
 
     @AfterClass
