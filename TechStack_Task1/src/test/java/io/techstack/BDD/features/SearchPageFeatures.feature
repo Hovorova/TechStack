@@ -1,4 +1,4 @@
-Feature: Sort from lowest price
+Feature: Search result page manipulations. Such as sort from lowest price, adding to favorites and booking a room.
 
   Scenario: Sort result of hotels by lowest price
     Given User is on the search result page

@@ -25,14 +25,14 @@ public class ChangeLanguageAndCurrencyTest {
     @Test
     public void changeLanguageTest() {
         String language = "Polski";
-        MainSteps.givenUserChangesLanguage(language);
+        MainSteps.whenUserChangesLanguage(language);
         MainSteps.thenUserHasChangedLanguage(language);
 
     }
 
     @Test
     public void changeCurrencyTest() {
-        MainSteps.givenUserChangesCurrency("Dollar");
+        MainSteps.whenUserChangesCurrency("Dollar");
         MainSteps.thenUserHasChangedCurrency();
     }
 

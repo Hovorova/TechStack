@@ -24,13 +24,13 @@ public class SignInTest {
 
     @Test
     public void signInTest() {
-        MainSteps.givenUserSignInWithTheCreatedAccount();
+        MainSteps.whenUserSignInWithTheCreatedAccount();
         MainSteps.thenUserNameIsDisplayedInTheTopOfThePage();
     }
 
     @Test
     public void destinationBetweenButtonShouldBeEquals() {
-        MainSteps.givenUserIsOnMainPage();
+        MainSteps.whenUserIsOnMainPage();
         MainSteps.thenPickThreeButtonsAndCheckIfDistanceBetweenThemIsEquals(mainpage.getSignInButton(), mainpage.getRegisterButton(), mainpage.getListYourProperty());
     }
 

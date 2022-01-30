@@ -19,7 +19,7 @@ public class AddToFavoriteTest {
 
     @Test
     public void addToFavTest() {
-        SearchPageSteps.givenUserAddsHotelToFavorites();
+        SearchPageSteps.whenUserAddsHotelToFavorites();
         SearchPageSteps.thenSuccessfulBannerIsDisplayed();
     }
 

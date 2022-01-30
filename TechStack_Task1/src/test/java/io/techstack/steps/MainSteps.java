@@ -6,7 +6,6 @@ import io.techstack.pages.AccountSignInPage;
 import io.techstack.pages.MainPage;
 import io.techstack.pages.SearchResultPage;
 import io.techstack.pages.SignInPage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -25,7 +24,7 @@ public class MainSteps {
         mainpage = new MainPage(driver);
     }
 
-    public static void givenUserSignInWithTheCreatedAccount() {
+    public static void whenUserSignInWithTheCreatedAccount() {
         driver.get(TestResources.getProperty("mainPage"));
         signInPage = mainpage.signIn();
         accountSignInPage = signInPage.enterEmail(TestResources.getProperty("email"));
@@ -37,7 +36,7 @@ public class MainSteps {
         assertTrue(accountSignInPage.getSendPassword().isDisplayed() || mainpage.IsUserSignedIn("Firstname Lastname"));
     }
 
-    public static void givenUserChangesLanguage(String language) {
+    public static void whenUserChangesLanguage(String language) {
         driver.get(TestResources.getProperty("mainPage"));
         mainpage = new MainPage(driver);
         mainpage.changeLanguage(language);
@@ -47,7 +46,7 @@ public class MainSteps {
         assertTrue(mainpage.confirmTheLanguageHasChanged(language));
     }
 
-    public static void givenUserChangesCurrency(String currency) {
+    public static void whenUserChangesCurrency(String currency) {
         driver.get(TestResources.getProperty("mainPage"));
         mainpage = new MainPage(driver);
         mainpage.changeCurrency(currency);
@@ -57,14 +56,11 @@ public class MainSteps {
         assertEquals("USD\n" + "Choose your currency. Your current currency is U.S. dollar", mainpage.getChangeCurrencyButton().getText());
     }
 
-    public static void givenUserEnterCorrectDataInSearchInput(String cityName) {
+    public static void whenUserEnterCorrectDataInSearchInput(String cityName, String dateCheckIn, String dateCheckOut) {
         driver.get(TestResources.getProperty("mainPage"));
         mainpage = new MainPage(driver);
         if (mainpage.elementInputCityTagnameAndAttribute()) {
-            mainpage.searchInput(cityName);
-            driver.findElement(By.xpath(mainpage.createXpathForCheckInAndCheckOutDate("2022-01-28"))).click();
-            driver.findElement(By.xpath(mainpage.createXpathForCheckInAndCheckOutDate("2022-01-30"))).click();
-            searchResultPage = mainpage.confirmSearch();
+            searchResultPage = mainpage.search(cityName, dateCheckIn, dateCheckOut);
         }
     }
 
@@ -72,7 +68,7 @@ public class MainSteps {
         assertTrue(searchResultPage.getTitleWithCityName().getText().contains(cityName));
     }
 
-    public static void givenUserIsOnMainPage() {
+    public static void whenUserIsOnMainPage() {
         driver.get(TestResources.getProperty("mainPage"));
         mainpage = new MainPage(driver);
         WaitUtils.waitForElementToBeVisible(driver, mainpage.getMainMenu());

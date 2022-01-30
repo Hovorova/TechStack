@@ -20,7 +20,7 @@ public class HotelSteps {
         hotelPage = new HotelPage(driver);
     }
 
-    public static void givenUnloggedinUserBookingARoom() {
+    public static void whenUnloggedinUserBookingARoom() {
         User user = User.builder().withFirstName("Firstname").withLastName("Lastname").withEmail("testegmail@gmail.com").build();
         WaitUtils.waitForElementToBeVisible(driver, hotelPage.getHotelGallery());
         hotelPage = new HotelPage(driver);

@@ -4,18 +4,14 @@ import io.techstack.beforeActionAndTestResources.DriverHelper;
 import io.techstack.beforeActionAndTestResources.TestResources;
 import io.techstack.beforeActionAndTestResources.WaitUtils;
 import io.techstack.pages.MainPage;
-import io.techstack.pages.SearchResultPage;
 import io.techstack.steps.MainSteps;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
-import static org.junit.Assert.assertTrue;
-
 public class SearchTest {
     private static MainPage mainPage;
-    private static SearchResultPage searchResultPage;
     private static MainSteps mainSteps;
     private static WebDriver driver;
 
@@ -31,7 +27,7 @@ public class SearchTest {
     @Test
     public void searchTest() {
         String cityName = "Kharkiv";
-        MainSteps.givenUserEnterCorrectDataInSearchInput(cityName);
+        MainSteps.whenUserEnterCorrectDataInSearchInput(cityName, "2022-01-28", "2022-01-30");
         MainSteps.thenPageWithSearchResultAppears(cityName);
     }
 
