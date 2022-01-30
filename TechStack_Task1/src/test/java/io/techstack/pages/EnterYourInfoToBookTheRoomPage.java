@@ -21,7 +21,7 @@ public class EnterYourInfoToBookTheRoomPage {
 
     public FinalStepPage fillTheBookForm(User user) {
         DriverWrapper wrapper = new DriverWrapper();
-        FormBox parent = wrapper.<FormBox>component(driver, FormBox.class, "form_box__content bui");
+        FormBox parent = wrapper.component(driver, FormBox.class, "bookForm");
         wrapper.<Input>getComponent(driver, Input.class, "firstname", parent).sendKeys(user.getFirstName());
         wrapper.<Input>getComponent(driver, Input.class, "lastname", parent).sendKeys(user.getLastName());
         wrapper.<Input>getComponent(driver, Input.class, "email", parent).sendKeys(user.getEmail());

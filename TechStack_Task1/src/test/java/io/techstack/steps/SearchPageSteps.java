@@ -32,7 +32,7 @@ public class SearchPageSteps {
         searchResultPage = new SearchResultPage(driver);
         WaitUtils.waitForElementToBeVisible(driver, searchResultPage.getSideBar());
         searchResultPage = searchResultPage.changeParam(cityName);
-        assertTrue(searchResultPage.changeParam(cityName).getTitleWithCityName().getText().contains(cityName));
+        assertTrue(searchResultPage.getTitleWithCityName().getText().contains(cityName));
     }
 
     public static void givenUserClickOnSortFromLowestPrice() {

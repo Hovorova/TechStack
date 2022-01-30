@@ -44,7 +44,7 @@ public class MainSteps {
     }
 
     public static void thenUserHasChangedLanguage(String language) {
-        assertEquals(TestResources.getProperty(language), mainpage.getSearchButton().getText());
+        assertTrue(mainpage.confirmTheLanguageHasChanged(language));
     }
 
     public static void givenUserChangesCurrency(String currency) {

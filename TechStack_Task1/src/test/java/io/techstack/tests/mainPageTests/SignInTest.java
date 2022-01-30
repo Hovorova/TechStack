@@ -2,11 +2,7 @@ package io.techstack.tests.mainPageTests;
 
 import io.techstack.beforeActionAndTestResources.DriverHelper;
 import io.techstack.beforeActionAndTestResources.TestResources;
-import io.techstack.components.DriverWrapper;
-import io.techstack.components.buttons.Button;
-import io.techstack.pages.AccountSignInPage;
 import io.techstack.pages.MainPage;
-import io.techstack.pages.SignInPage;
 import io.techstack.steps.MainSteps;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
