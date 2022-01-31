@@ -1,4 +1,5 @@
-Feature: Main page manipulations. Such as changing language, searching and sign in.
+Feature: MainPageFeature
+  Main page manipulations. Such as changing language, searching and sign in.
 
   Scenario Outline: Changing language to <language>
     Given User is on the main page

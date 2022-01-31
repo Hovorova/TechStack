@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/java/io/techstack/BDD/features",
+        features = "src/features",
         glue = {"io/techstack/BDD/featureSteps"},
         plugin = {"pretty"}
 )
