@@ -1,11 +1,11 @@
 package io.techstack.steps;
 
 import io.techstack.beforeActionAndTestResources.WaitUtils;
+import io.techstack.components.DriverWrapper;
 import io.techstack.pages.EnterYourInfoToBookTheRoomPage;
 import io.techstack.pages.FinalStepPage;
 import io.techstack.pages.HotelPage;
 import io.techstack.valueObjects.User;
-import org.openqa.selenium.WebDriver;
 
 import static org.junit.Assert.assertTrue;
 
@@ -13,9 +13,9 @@ public class HotelSteps {
     private static HotelPage hotelPage;
     private static EnterYourInfoToBookTheRoomPage enterYourInfoToBookTheRoomPage;
     private static FinalStepPage finalStepPage;
-    private static WebDriver driver;
+    private static DriverWrapper driver;
 
-    public HotelSteps(WebDriver driver) {
+    public HotelSteps(DriverWrapper driver) {
         this.driver = driver;
         hotelPage = new HotelPage(driver);
     }

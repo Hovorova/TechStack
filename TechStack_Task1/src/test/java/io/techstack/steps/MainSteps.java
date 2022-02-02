@@ -2,12 +2,12 @@ package io.techstack.steps;
 
 import io.techstack.beforeActionAndTestResources.TestResources;
 import io.techstack.beforeActionAndTestResources.WaitUtils;
+import io.techstack.components.DriverWrapper;
 import io.techstack.pages.AccountSignInPage;
 import io.techstack.pages.MainPage;
 import io.techstack.pages.SearchResultPage;
 import io.techstack.pages.SignInPage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import static org.junit.Assert.assertEquals;
@@ -18,9 +18,9 @@ public class MainSteps {
     private static AccountSignInPage accountSignInPage;
     private static SearchResultPage searchResultPage;
     private static MainPage mainpage;
-    private static WebDriver driver;
+    private static DriverWrapper driver;
 
-    public MainSteps(WebDriver driver) {
+    public MainSteps(DriverWrapper driver) {
         this.driver = driver;
         mainpage = new MainPage(driver);
     }
@@ -62,8 +62,8 @@ public class MainSteps {
         mainpage = new MainPage(driver);
         if (mainpage.elementInputCityTagnameAndAttribute()) {
             mainpage.searchInput(cityName);
-            driver.findElement(By.xpath(mainpage.createXpathForCheckInAndCheckOutDate("2022-01-28"))).click();
-            driver.findElement(By.xpath(mainpage.createXpathForCheckInAndCheckOutDate("2022-01-30"))).click();
+            driver.findElement(By.xpath(mainpage.createXpathForCheckInAndCheckOutDate("2022-03-28"))).click();
+            driver.findElement(By.xpath(mainpage.createXpathForCheckInAndCheckOutDate("2022-03-30"))).click();
             searchResultPage = mainpage.confirmSearch();
         }
     }

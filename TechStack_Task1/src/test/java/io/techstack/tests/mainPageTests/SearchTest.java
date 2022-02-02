@@ -3,21 +3,19 @@ package io.techstack.tests.mainPageTests;
 import io.techstack.beforeActionAndTestResources.DriverHelper;
 import io.techstack.beforeActionAndTestResources.TestResources;
 import io.techstack.beforeActionAndTestResources.WaitUtils;
+import io.techstack.components.DriverWrapper;
 import io.techstack.pages.MainPage;
 import io.techstack.pages.SearchResultPage;
 import io.techstack.steps.MainSteps;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-
-import static org.junit.Assert.assertTrue;
 
 public class SearchTest {
     private static MainPage mainPage;
     private static SearchResultPage searchResultPage;
     private static MainSteps mainSteps;
-    private static WebDriver driver;
+    private static DriverWrapper driver;
 
     @BeforeClass
     public static void setup() {

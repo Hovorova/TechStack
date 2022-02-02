@@ -2,19 +2,15 @@ package io.techstack.tests.bookingARoomTests;
 
 import io.techstack.beforeActionAndTestResources.DriverHelper;
 import io.techstack.beforeActionAndTestResources.TestResources;
-import io.techstack.beforeActionAndTestResources.WaitUtils;
-import io.techstack.pages.EnterYourInfoToBookTheRoomPage;
-import io.techstack.pages.FinalStepPage;
-import io.techstack.pages.HotelPage;
+import io.techstack.components.DriverWrapper;
 import io.techstack.steps.HotelSteps;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
 
 public class SelectRoomForBookingAndFillingFormTest {
     private static HotelSteps hotelSteps;
-    private static WebDriver driver;
+    private static DriverWrapper driver;
 
     @BeforeClass
     public static void setup() {

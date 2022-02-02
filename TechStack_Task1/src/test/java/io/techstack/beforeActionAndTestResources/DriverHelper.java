@@ -1,12 +1,11 @@
 package io.techstack.beforeActionAndTestResources;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import io.techstack.components.DriverWrapper;
 
 public class DriverHelper {
-    public static WebDriver getDriver() {
+    public static DriverWrapper getDriver() {
         System.setProperty("webdriver.chrome.driver", TestResources.getProperty("chromedriver"));
-        WebDriver driver = new ChromeDriver();
+        DriverWrapper driver = new DriverWrapper();
         driver.manage().window().maximize();
         return driver;
     }

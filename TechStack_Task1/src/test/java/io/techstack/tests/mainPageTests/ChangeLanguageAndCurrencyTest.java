@@ -2,17 +2,17 @@ package io.techstack.tests.mainPageTests;
 
 import io.techstack.beforeActionAndTestResources.DriverHelper;
 import io.techstack.beforeActionAndTestResources.TestResources;
+import io.techstack.components.DriverWrapper;
 import io.techstack.pages.MainPage;
 import io.techstack.steps.MainSteps;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
 
 public class ChangeLanguageAndCurrencyTest {
     private static MainPage mainPage;
     private static MainSteps mainSteps;
-    private static WebDriver driver;
+    private static DriverWrapper driver;
 
     @BeforeClass
     public static void setup() {

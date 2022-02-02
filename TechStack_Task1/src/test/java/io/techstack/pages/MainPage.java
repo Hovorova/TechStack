@@ -1,7 +1,7 @@
 package io.techstack.pages;
 
+import io.techstack.components.DriverWrapper;
 import lombok.Getter;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -18,9 +18,9 @@ public class MainPage extends BasePage {
     @FindBy(xpath = ".//span[contains(@class,'icon sb-date')]")
     private WebElement checkInButton;
 
-    private WebDriver driver;
+    private DriverWrapper driver;
 
-    public MainPage(WebDriver driver) {
+    public MainPage(DriverWrapper driver) {
         super(driver);
         PageFactory.initElements(driver, this);
         this.driver = driver;

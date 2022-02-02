@@ -27,14 +27,6 @@ public class SearchPageSteps {
         assertTrue(searchResultPage.getSuccesfullyAddedToFavoritesBanner().isDisplayed());
     }
 
-    public static void changingSearchParamOnSearchResultPage(String cityName) {
-        driver.get(TestResources.getProperty("searchResultPage"));
-        searchResultPage = new SearchResultPage(driver);
-        WaitUtils.waitForElementToBeVisible(driver, searchResultPage.getSideBar());
-        searchResultPage = searchResultPage.changeParam(cityName);
-        assertTrue(searchResultPage.changeParam(cityName).getTitleWithCityName().getText().contains(cityName));
-    }
-
     public static void givenUserClickOnSortFromLowestPrice() {
         WaitUtils.waitForElementToBeClickable(driver, searchResultPage.getSortFromLowestPrice());
         searchResultPage.getSortFromLowestPrice().click();
