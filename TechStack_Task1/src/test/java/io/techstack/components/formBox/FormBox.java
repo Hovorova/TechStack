@@ -6,6 +6,6 @@ import org.openqa.selenium.By;
 public class FormBox extends BaseComponent {
     @Override
     public By construct() {
-        return By.xpath(".//form[@id = '"+ identifier +"']");
+        return By.xpath(".//div[contains(@class, '" + identifier + "')]");
     }
 }

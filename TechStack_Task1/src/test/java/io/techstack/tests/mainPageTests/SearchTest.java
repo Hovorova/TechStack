@@ -27,7 +27,7 @@ public class SearchTest {
     @Test
     public void searchTest() {
         String cityName = "Kharkiv";
-        MainSteps.whenUserEnterCorrectDataInSearchInput(cityName, "2022-01-28", "2022-01-30");
+        MainSteps.whenUserEnterCorrectDataInSearchInput(cityName, "2022-03-28", "2022-03-30");
         MainSteps.thenPageWithSearchResultAppears(cityName);
     }
 

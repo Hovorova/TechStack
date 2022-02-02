@@ -1,15 +1,15 @@
 package io.techstack.BDD.featureSteps;
 
-import org.openqa.selenium.WebDriver;
+import io.techstack.components.DriverWrapper;
 
 public class BaseSteps {
-    private WebDriver driver;
+    private DriverWrapper driver;
 
-    public WebDriver getDriver() {
+    public DriverWrapper getDriver() {
         return driver;
     }
 
-    public void setDriver(WebDriver driver) {
+    public void setDriver(DriverWrapper driver) {
         this.driver = driver;
     }
 }

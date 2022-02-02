@@ -27,7 +27,7 @@ public class SearchPageSteps {
         assertTrue(searchResultPage.getSuccesfullyAddedToFavoritesBanner().isDisplayed());
     }
 
-    public static void givenUserClickOnSortFromLowestPrice() {
+    public static void whenUserClickOnSortFromLowestPrice() {
         WaitUtils.waitForElementToBeClickable(driver, searchResultPage.getSortFromLowestPrice());
         searchResultPage.getSortFromLowestPrice().click();
     }
