@@ -4,18 +4,14 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.techstack.beforeActionAndTestResources.TestResources;
-import io.techstack.pages.MainPage;
 import io.techstack.steps.MainSteps;
 
 public class MainStepsBDD extends BaseSteps{
     private BaseSteps baseSteps;
-    private static MainPage mainPage;
     private static MainSteps mainSteps;
-    String cityName ="Kharkiv";
 
     public MainStepsBDD(BaseSteps baseSteps) {
         this.baseSteps = baseSteps;
-        mainPage = new MainPage(getDriver());
         mainSteps = new MainSteps(baseSteps.getDriver());
     }
 
@@ -24,13 +20,13 @@ public class MainStepsBDD extends BaseSteps{
         baseSteps.getDriver().get(TestResources.getProperty("mainPage"));
     }
 
-    @When("User enters correct data to search fields")
-    public void userEntersCorrectDataToSearchFields() {
-        MainSteps.whenUserEnterCorrectDataInSearchInput(cityName, "2022-02-25", "2022-02-27");
+    @When("User enters correct data to search fields: {string}, {string} and {string}")
+    public void userEntersCorrectDataToSearchFieldsCityNameDateCheckInAndDateCheckOut(String cityName, String dateCheckIn, String dateCheckOut) {
+        MainSteps.whenUserEnterCorrectDataInSearchInput(cityName, dateCheckIn, dateCheckOut);
     }
 
-    @Then("Search result page is appears")
-    public void searchResultPageIsAppears() {
+    @Then("Search result page is appears with {string} in title")
+    public void searchResultPageIsAppears(String cityName) {
         MainSteps.thenPageWithSearchResultAppears(cityName);
     }
 

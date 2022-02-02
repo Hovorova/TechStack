@@ -13,9 +13,14 @@ Feature: MainPageFeature
       | 'Russian'   |
       | 'Ukrainian' |
 
-  Scenario: Searching hotels on main page
-    When User enters correct data to search fields
-    Then Search result page is appears
+  Scenario Outline: Searching hotels on main page
+    When User enters correct data to search fields: <cityName>, <dateCheckIn> and <dateCheckOut>
+    Then Search result page is appears with <cityName> in title
+    Examples:
+      | cityName  | dateCheckIn  | dateCheckOut |
+      | 'Kharkiv' | '2022-03-28' | '2022-03-30' |
+      | 'Kyiv'    | '2022-03-01' | '2022-03-08' |
+      | 'Odesa'   | '2022-03-04' | '2022-03-06' |
 
   Scenario: Registered user signing in
     When User sign in

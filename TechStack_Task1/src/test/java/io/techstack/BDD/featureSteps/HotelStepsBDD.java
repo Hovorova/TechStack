@@ -4,17 +4,14 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.techstack.beforeActionAndTestResources.TestResources;
-import io.techstack.pages.HotelPage;
 import io.techstack.steps.HotelSteps;
 
 public class HotelStepsBDD extends BaseSteps {
     private BaseSteps baseSteps;
-    private static HotelPage hotelPage;
     private static HotelSteps hotelSteps;
 
     public HotelStepsBDD(BaseSteps baseSteps) {
         this.baseSteps = baseSteps;
-        hotelPage = new HotelPage(getDriver());
         hotelSteps = new HotelSteps(baseSteps.getDriver());
     }
 
