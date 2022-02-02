@@ -1,9 +1,9 @@
 package io.techstack.pages;
 
+import io.techstack.components.DriverWrapper;
 import lombok.Getter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -21,9 +21,9 @@ public class HotelPage {
     @FindBy(xpath = ".//div[contains(@class, 'gallery-header')]")
     private WebElement hotelGallery;
 
-    private WebDriver driver;
+    private DriverWrapper driver;
 
-    public HotelPage(WebDriver driver) {
+    public HotelPage(DriverWrapper driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }

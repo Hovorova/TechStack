@@ -21,12 +21,6 @@ public class SearchResultPage {
     @FindBy(xpath = "//div[@data-testid='filters-group-slider']//div[@role='none'][2]")
     private WebElement targetDotOnBudgetLine;
 
-    @FindBy(xpath = ".//input[@type='search']")
-    private WebElement cityNameField;
-
-    @FindBy(xpath = ".//button[@data-sb-id='main']")
-    private WebElement submitChangesButton;
-
     @FindBy(xpath = ".//button[@data-testid='wishlist-button']")
     private WebElement addToFavouriteIcon;
 
@@ -36,9 +30,6 @@ public class SearchResultPage {
     @FindBy(xpath = ".//div[@data-component='arp-header']")
     private WebElement titleWithCityName;
 
-    @FindBy(xpath = ".//form[contains(@data-component,'searchbox')]")
-    private WebElement sideBar;
-
     @FindBy(xpath = ".//li[@data-id='price']")
     private WebElement sortFromLowestPrice;
 
@@ -47,13 +38,6 @@ public class SearchResultPage {
     public SearchResultPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
-    }
-
-    public SearchResultPage changeParam(String cityName) {
-        cityNameField.clear();
-        cityNameField.sendKeys(cityName);
-        submitChangesButton.click();
-        return new SearchResultPage(driver);
     }
 
     public void setBudget() {
