@@ -8,8 +8,4 @@ public class Button extends BaseComponent {
     public By construct() {
         return By.xpath(".//button[@type='" + identifier + "']");
     }
-
-    public void clickOnButton() {
-        instances.get(identifier).click();
-    }
 }

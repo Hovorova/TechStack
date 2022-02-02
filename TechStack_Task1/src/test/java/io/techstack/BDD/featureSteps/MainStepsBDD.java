@@ -15,13 +15,13 @@ public class MainStepsBDD extends BaseSteps{
 
     public MainStepsBDD(BaseSteps baseSteps) {
         this.baseSteps = baseSteps;
+        mainPage = new MainPage(getDriver());
+        mainSteps = new MainSteps(baseSteps.getDriver());
     }
 
     @Given("User is on the main page")
     public void userIsOnTheMainPage() {
         baseSteps.getDriver().get(TestResources.getProperty("mainPage"));
-        mainPage = new MainPage(getDriver());
-        mainSteps = new MainSteps(baseSteps.getDriver());
     }
 
     @When("User enters correct data to search fields")

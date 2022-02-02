@@ -22,11 +22,11 @@ public class DriverWrapper {
         return driver.findElement(component.construct());
     }
 
-    public <Component extends BaseComponent> Component component(WebDriver driver, Class componentClass, String identifier){
+    public <Component extends BaseComponent> Component component(WebDriver driver, Class componentClass, String identifier) {
         return component(driver, componentClass, identifier, null);
     }
 
-    public <Component extends BaseComponent> Component component(WebDriver driver, Class componentClass, String identifier, BaseComponent parent){
+    public <Component extends BaseComponent> Component component(WebDriver driver, Class componentClass, String identifier, BaseComponent parent) {
         Component component;
         try {
             component = (Component) componentClass.newInstance();

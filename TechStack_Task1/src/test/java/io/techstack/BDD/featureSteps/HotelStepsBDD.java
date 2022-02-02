@@ -14,13 +14,13 @@ public class HotelStepsBDD extends BaseSteps {
 
     public HotelStepsBDD(BaseSteps baseSteps) {
         this.baseSteps = baseSteps;
+        hotelPage = new HotelPage(getDriver());
+        hotelSteps = new HotelSteps(baseSteps.getDriver());
     }
 
     @Given("User is on the hotel page")
     public void userIsOnTheHotelPage() {
         baseSteps.getDriver().get(TestResources.getProperty("hotelPage"));
-        hotelPage = new HotelPage(getDriver());
-        hotelSteps = new HotelSteps(baseSteps.getDriver());
     }
 
     @When("User pick a room and fill UserInfo form")

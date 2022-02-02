@@ -14,13 +14,13 @@ public class SearchResultStepsBDD extends BaseSteps {
 
     public SearchResultStepsBDD(BaseSteps baseSteps) {
         this.baseSteps = baseSteps;
+        searchResultPage = new SearchResultPage(getDriver());
+        searchPageSteps = new SearchPageSteps(baseSteps.getDriver());
     }
 
     @Given("User is on the search result page")
     public void userIsOnTheSearchResultPage() {
         baseSteps.getDriver().get(TestResources.getProperty("searchResultPage"));
-        searchResultPage = new SearchResultPage(getDriver());
-        searchPageSteps = new SearchPageSteps(baseSteps.getDriver());
     }
 
     @When("User add hotel to the favorites")
