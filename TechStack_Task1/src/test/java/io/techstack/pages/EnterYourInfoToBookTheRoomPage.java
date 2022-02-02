@@ -1,43 +1,30 @@
 package io.techstack.pages;
 
+import io.techstack.components.DriverWrapper;
+import io.techstack.components.buttons.Button;
+import io.techstack.components.formBox.FormBox;
+import io.techstack.components.inputs.Input;
 import io.techstack.valueObjects.User;
 import lombok.Getter;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 @Getter
 public class EnterYourInfoToBookTheRoomPage {
 
-    @FindBy(xpath = ".//input[@name='firstname']")
-    private WebElement firstNameInput;
+    private DriverWrapper driver;
 
-    @FindBy(xpath = ".//input[@name='lastname']")
-    private WebElement lastNameInput;
-
-    @FindBy(xpath = ".//input[@name='email']")
-    private WebElement emailInput;
-
-    @FindBy(xpath = ".//input[@name='email_confirm']")
-    private WebElement confirmEmailInput;
-
-    @FindBy(xpath = ".//button[@name='book']")
-    private WebElement submitFormButton;
-
-    private WebDriver driver;
-
-    public EnterYourInfoToBookTheRoomPage(WebDriver driver) {
+    public EnterYourInfoToBookTheRoomPage(DriverWrapper driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
 
     public FinalStepPage fillTheBookForm(User user) {
-        firstNameInput.sendKeys(user.getFirstName());
-        lastNameInput.sendKeys(user.getLastName());
-        emailInput.sendKeys(user.getEmail());
-        confirmEmailInput.sendKeys(user.getEmail());
-        submitFormButton.submit();
+        FormBox parent = driver.component(FormBox.class, "bp-personal-details-form");
+        driver.getComponent(Input.class, "firstname", parent).sendKeys(user.getFirstName());
+        driver.getComponent(Input.class, "lastname", parent).sendKeys(user.getLastName());
+        driver.getComponent(Input.class, "email", parent).sendKeys(user.getEmail());
+        driver.getComponent(Input.class, "email_confirm", parent).sendKeys(user.getEmail());
+        driver.getComponent(Button.class, "submit").submit();
         return new FinalStepPage(driver);
     }
 }

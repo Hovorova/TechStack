@@ -1,8 +1,8 @@
 package io.techstack.pages;
 
 import io.techstack.beforeActionAndTestResources.WaitUtils;
+import io.techstack.components.DriverWrapper;
 import lombok.Getter;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -56,9 +56,9 @@ public class BasePage {
     private WebElement mainMenu;
 
 
-    private WebDriver driver;
+    private DriverWrapper driver;
 
-    public BasePage(WebDriver driver) {
+    public BasePage(DriverWrapper driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }

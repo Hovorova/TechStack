@@ -1,7 +1,9 @@
 package io.techstack.pages;
 
+import io.techstack.components.DriverWrapper;
+import io.techstack.components.buttons.Button;
+import io.techstack.components.inputs.Input;
 import lombok.Getter;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -15,22 +17,19 @@ public class AccountSignInPage {
     @FindBy(xpath = ".//input[@name='password']")
     private WebElement passwordInput;
 
-    @FindBy(xpath = ".//button[@type='submit']")
-    private WebElement submitPasswordButton;
-
     @FindBy(xpath = ".//iframe[@title='Human verification challenge']")
     private WebElement pressAndHoldButtonImNotARobot;
 
-    private WebDriver driver;
+    private DriverWrapper driver;
 
-    public AccountSignInPage(WebDriver driver) {
+    public AccountSignInPage(DriverWrapper driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
 
     public MainPage enterPassword(String password){
-        passwordInput.sendKeys(password);
-        submitPasswordButton.click();
+        driver.getComponent(Input.class, "password").sendKeys(password);
+        driver.getComponent(Button.class, "submit").click();
         return new MainPage(driver);
     }
 
