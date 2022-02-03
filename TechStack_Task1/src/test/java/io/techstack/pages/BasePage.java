@@ -37,6 +37,18 @@ public class BasePage {
     @FindBy(xpath = ".//button[@data-modal-header-async-type='currencyDesktop']")
     private WebElement changeCurrencyButton;
 
+    @FindBy(xpath = ".//img[contains(@class, 'image' )and contains(@src,'en')]")
+    private WebElement enIcon;
+
+    @FindBy(xpath = ".//img[contains(@class, 'image' )and contains(@src,'pl')]")
+    private WebElement plIcon;
+
+    @FindBy(xpath = ".//img[contains(@class, 'image' )and contains(@src,'ru')]")
+    private WebElement ruIcon;
+
+    @FindBy(xpath = ".//img[contains(@class, 'image' )and contains(@src,'ua')]")
+    private WebElement uaIcon;
+
     @FindBy(partialLinkText = "EUR")
     private WebElement currencyEuro;
 
@@ -70,6 +82,20 @@ public class BasePage {
 
     public boolean IsUserSignedIn(String username) {
         return userName.getText().contains(username);
+    }
+
+    public boolean confirmTheLanguageHasChanged(String languge) {
+        switch (languge){
+            case "English":
+                return enIcon.isDisplayed();
+            case "Russian":
+                return ruIcon.isDisplayed();
+            case "Ukrainian":
+                return uaIcon.isDisplayed();
+            case "Polski":
+                return plIcon.isDisplayed();
+        }
+        return false;
     }
 
     public void changeLanguage(String language) {
@@ -116,6 +142,7 @@ public class BasePage {
                 break;
         }
     }
+
     public boolean isDistanceBetweenButtonsEqual(WebElement firstButton, WebElement secondButton, WebElement thirdButton) {
         int dimensionForSecondSpace = thirdButton.getLocation().getX() - secondButton.getLocation().getX() - secondButton.getSize().getWidth();
         int dimensionForFirstSpace = secondButton.getLocation().getX() - firstButton.getLocation().getX() - firstButton.getSize().getWidth();

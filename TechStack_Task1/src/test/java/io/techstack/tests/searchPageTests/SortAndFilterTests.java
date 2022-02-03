@@ -24,13 +24,13 @@ public class SortAndFilterTests {
 
     @Test
     public void sortByLowerPriceTest() {
-        SearchPageSteps.givenUserClickOnSortFromLowestPrice();
+        SearchPageSteps.whenUserClickOnSortFromLowestPrice();
         SearchPageSteps.thenButtonSortFromLowestPriceIsEnable();
     }
 
     @Test
     public void filterSetYourBudgetTest() {
-        SearchPageSteps.givenUserUseFilterSetYourOwnBudget();
+        SearchPageSteps.whenUserUseFilterSetYourOwnBudget();
         SearchPageSteps.thenBoundariesOfBudgetIsDispayed();
     }
 

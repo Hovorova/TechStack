@@ -21,7 +21,7 @@ public class SelectRoomForBookingAndFillingFormTest {
 
     @Test
     public void selectRoomTest() {
-        HotelSteps.givenUnloggedinUserBookingARoom();
+        HotelSteps.whenUnloggedinUserBookingARoom();
         HotelSteps.thenSuccessfulBannerIsDisplayed();
     }
 

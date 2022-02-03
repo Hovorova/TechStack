@@ -16,7 +16,7 @@ public class SearchPageSteps {
         searchResultPage = new SearchResultPage(driver);
     }
 
-    public static void givenUserAddsHotelToFavorites() {
+    public static void whenUserAddsHotelToFavorites() {
         driver.get(TestResources.getProperty("searchResultPage"));
         searchResultPage = new SearchResultPage(driver);
         searchResultPage.getAddToFavouriteIcon().click();
@@ -27,7 +27,7 @@ public class SearchPageSteps {
         assertTrue(searchResultPage.getSuccesfullyAddedToFavoritesBanner().isDisplayed());
     }
 
-    public static void givenUserClickOnSortFromLowestPrice() {
+    public static void whenUserClickOnSortFromLowestPrice() {
         WaitUtils.waitForElementToBeClickable(driver, searchResultPage.getSortFromLowestPrice());
         searchResultPage.getSortFromLowestPrice().click();
     }
@@ -36,7 +36,7 @@ public class SearchPageSteps {
         assertTrue(searchResultPage.getSortFromLowestPrice().isEnabled());
     }
 
-    public static void givenUserUseFilterSetYourOwnBudget() {
+    public static void whenUserUseFilterSetYourOwnBudget() {
         WaitUtils.waitForElementToBeVisible(driver, searchResultPage.getSetYourOwnBudgetButton());
         searchResultPage.setBudget();
     }

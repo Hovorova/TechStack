@@ -2,6 +2,7 @@ package io.techstack.pages;
 
 import io.techstack.components.DriverWrapper;
 import lombok.Getter;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -26,25 +27,19 @@ public class MainPage extends BasePage {
         this.driver = driver;
     }
 
-    public SearchResultPage confirmSearch() {
-        searchButton.click();
-        return new SearchResultPage(driver);
-    }
-
-    public void searchInput(String cityName) {
+    public SearchResultPage search(String cityName, String dateCheckIn, String dateCheckOut) {
         cityInput.clear();
         cityInput.sendKeys(cityName);
         checkInButton.click();
+        driver.findElement(By.xpath(".//td[@data-date='" + dateCheckIn + "']")).click();
+        driver.findElement(By.xpath(".//td[@data-date='" + dateCheckOut + "']")).click();
+        searchButton.click();
+        return new SearchResultPage(driver);
     }
 
     public boolean elementInputCityTagnameAndAttribute() {
         boolean tagIsInput = "input".equals(cityInput.getTagName());
         boolean attributeWhereAreYouGoingCity = "search".equals(cityInput.getAttribute("type"));
         return tagIsInput & attributeWhereAreYouGoingCity;
-    }
-
-    public String createXpathForCheckInAndCheckOutDate(String dateCheckInDate) {
-        String finalStringCheckInDate = ".//td[@data-date='" + dateCheckInDate + "']";
-        return finalStringCheckInDate;
     }
 }

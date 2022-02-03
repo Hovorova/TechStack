@@ -5,7 +5,6 @@ import io.techstack.beforeActionAndTestResources.TestResources;
 import io.techstack.beforeActionAndTestResources.WaitUtils;
 import io.techstack.components.DriverWrapper;
 import io.techstack.pages.MainPage;
-import io.techstack.pages.SearchResultPage;
 import io.techstack.steps.MainSteps;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -13,7 +12,6 @@ import org.junit.Test;
 
 public class SearchTest {
     private static MainPage mainPage;
-    private static SearchResultPage searchResultPage;
     private static MainSteps mainSteps;
     private static DriverWrapper driver;
 
@@ -29,7 +27,7 @@ public class SearchTest {
     @Test
     public void searchTest() {
         String cityName = "Kharkiv";
-        MainSteps.givenUserEnterCorrectDataInSearchInput(cityName);
+        MainSteps.whenUserEnterCorrectDataInSearchInput(cityName, "2022-03-28", "2022-03-30");
         MainSteps.thenPageWithSearchResultAppears(cityName);
     }
 
