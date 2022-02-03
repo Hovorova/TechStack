@@ -6,7 +6,7 @@ import io.cucumber.java.en.When;
 import io.techstack.beforeActionAndTestResources.TestResources;
 import io.techstack.steps.MainSteps;
 
-public class MainStepsBDD extends BaseSteps{
+public class MainStepsBDD extends BaseSteps {
     private BaseSteps baseSteps;
     private static MainSteps mainSteps;
 
@@ -26,7 +26,7 @@ public class MainStepsBDD extends BaseSteps{
     }
 
     @Then("Search result page is appears with {string} in title")
-    public void searchResultPageIsAppears(String cityName) {
+    public void searchResultPageIsAppearsWithCityNameInTitle(String cityName) {
         MainSteps.thenPageWithSearchResultAppears(cityName);
     }
 

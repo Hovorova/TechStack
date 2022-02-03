@@ -36,7 +36,7 @@ public class SearchResultStepsBDD extends BaseSteps {
     }
 
     @Then("Sort from lowest price button is enabled")
-    public void sortFromLowestPriceButton(){
+    public void sortFromLowestPriceButtonIsEnabled(){
         SearchPageSteps.thenButtonSortFromLowestPriceIsEnable();
     }
 }
